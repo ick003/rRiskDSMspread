@@ -1,0 +1,24 @@
+Package: rRiskDSMspread
+Type: Package
+Title: Code and Data for Ickowcz et al. (2021) Submitted.
+Version: 1.0
+Author: Adrien Ickowicz
+Maintainer: Adrien Ickowicz <adrien.ickowicz@csiro.au>
+Description: Supplementary code and data for Bayesian analysis
+  of spread and persistence, see vignette.
+Depends: R (>= 3.5.0)
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Imports: stats, graphics, grDevices, MASS, sp
+Suggests: 
+    mvtnorm,
+    RColorBrewer,
+    fields,
+    viridis,
+    knitr,
+    rmarkdown,
+    spreadR,
+    ElicitR
+RoxygenNote: 7.1.1
+VignetteBuilder: knitr
