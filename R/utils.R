@@ -173,3 +173,180 @@ postPlot = function(prior,posterior = NULL, logF = FALSE, samples = TRUE, distPr
     
     
 }
+
+
+elicitedColorScale <-brewer.pal(5,"Dark2")
+
+colPrior = "darkgreen"
+colPosterior = "darkblue"
+colPred = "darkorange"
+colTraj = "black"
+
+#' @export
+cdfPlot = function(prior,posterior = NULL, logF = FALSE, samples = TRUE, distPrior = NULL, distPosterior = NULL,
+                   xlab = "", colA = "darkgreen", colB = "darkblue",
+                   CI = c(0.025, 0.975), xRange = c(0.0001,0.99999),yLIM = NULL,shade = TRUE,
+                   quantBreaks = NULL, regBreaks = NULL, smoothCurve = F, spanLoess = 0.5){
+    
+    if(samples){
+        TrFun = function(x){x}
+        if(logF){TrFun = function(x){log(x)}}
+        
+        pPlot = TRUE
+        if(is.null(posterior)){posterior = prior
+        pPlot = FALSE}
+        if(is.null(quantBreaks)){
+            qX = unique(c(seq(0,0.01,0.005),seq(0.01,0.05,0.005),seq(0.25,0.75,0.005),seq(0.95,0.99,0.005), seq(0.99,1,0.005)))}else{
+                qX = quantBreaks
+            }
+        
+        qVar = quantile(TrFun(prior), qX)
+        qVar_Post = quantile(TrFun(posterior), qX)
+        if(!is.null(regBreaks)){
+            if(length(regBreaks) == 1){
+                qVar = seq(min(TrFun(prior)), max(TrFun(prior)), length.out = regBreaks)
+                qVar_Post = seq(min(TrFun(posterior)), max(TrFun(posterior)), length.out = regBreaks)}
+            if(length(regBreaks) > 1){
+                qVar = regBreaks
+                qVar_Post = regBreaks}
+        }
+        
+        qVarA = sort(unique(c(qVar, qVar_Post)))
+        
+        yPrior = sapply(qVarA, function(x) mean(TrFun(prior) < x))
+        yPosterior = sapply(qVarA, function(x) mean(TrFun(posterior) < x))
+        
+        #hdV = hist(TrFun(prior), breaks = qVar, plot=F)
+        #hdV_Post = hist(TrFun(posterior), breaks = qVar_Post, plot=F)
+        
+        xPrior = qVarA #hdV$mids
+        xPosterior = qVarA#hdV_Post$mids
+        
+        if(smoothCurve){
+            yPrior = predict(loess(yPrior~xPrior, span = spanLoess))
+            yPosterior = predict(loess(yPosterior~xPosterior, span = spanLoess))
+        }
+        
+        
+        
+        if(is.null(yLIM)){yLIM = range(c(yPrior, yPosterior), na.rm=T)}
+        xLIM = range(c(quantile(TrFun(prior),xRange), quantile(TrFun(posterior),xRange)))
+        plot(xPrior, yPrior, col=colA, type="l",ylim = yLIM,
+             xlab=xlab,ylab="",
+             xlim = xLIM, axes = F, main = "")
+        
+        qPrior = quantile(TrFun(prior), CI)
+        qPosterior = quantile(TrFun(posterior), CI)
+        idxVar = sapply(qPrior, function(x) which.min((x - qVarA)^2))
+        idxVar_Post = sapply(qPosterior, function(x) which.min((x - qVarA)^2))
+        
+        if(shade){polygon(x = c(xPrior[idxVar[1]:idxVar[2]], rev(xPrior[idxVar[1]:idxVar[2]])), c(yPrior[idxVar[1]:idxVar[2]], rep(0, idxVar[2] - idxVar[1] + 1)), col=adjustcolor(colA, alpha.f = 0.1), border=NA)}
+        
+        if(pPlot){
+            points(xPosterior, yPosterior, type="l", col = colB)
+            if(shade){polygon(x = c(xPosterior[idxVar_Post[1]:idxVar_Post[2]], rev(xPosterior[idxVar_Post[1]:idxVar_Post[2]])), c(yPosterior[idxVar_Post[1]:idxVar_Post[2]], rep(0, idxVar_Post[2] - idxVar_Post[1] + 1)), col=adjustcolor(colB, alpha.f = 0.1), border=NA)}
+        }
+        axis(2)
+        idxMaxVar = which.min((yPrior - 0.5)^2)
+        segments(xPrior[idxMaxVar], 0, xPrior[idxMaxVar], yPrior[idxMaxVar], col = colA)
+        points(xPrior[idxMaxVar], yPrior[idxMaxVar],col=colA, pch=16)
+        #abline(v = mean(prior), lty= 2, col = colA)
+        
+        if(pPlot){
+            idxMaxVar_Post =  which.min((yPosterior - 0.5)^2)
+            segments(xPosterior[idxMaxVar_Post], 0, xPosterior[idxMaxVar_Post], yPosterior[idxMaxVar_Post], col = colB)
+            points(xPosterior[idxMaxVar_Post], yPosterior[idxMaxVar_Post],col=colB, pch=16)
+            #abline(v = mean(posterior), lty= 2, col = colB)
+        }
+        
+    }else{
+        
+        
+        xPrior = eval(parse(text = paste0("q",distPrior,"(seq(xRange[1],xRange[2],length.out=2000),",prior[1],",",prior[2],")")))
+        xPosterior = NULL
+        if(!is.null(posterior)){xPosterior = eval(parse(text = paste0("q",distPosterior,"(seq(xRange[1],xRange[2],length.out=2000),",posterior[1],",",posterior[2],")")))}
+        
+        yPrior = eval(parse(text = paste0("p",distPrior,"(xPrior,",prior[1],",",prior[2],")")))
+        yPosterior = NULL
+        if(!is.null(posterior)){yPosterior = eval(parse(text = paste0("p",distPosterior,"(xPosterior,",posterior[1],",",posterior[2],")")))}
+        
+        xPriorCI = eval(parse(text = paste0("q",distPrior,"(seq(0.025,0.957,length.out=2000),",prior[1],",",prior[2],")")))
+        xPosteriorCI = NULL
+        if(!is.null(posterior)){xPosteriorCI = eval(parse(text = paste0("q",distPosterior,"(seq(0.025,0.975,length.out=2000),",posterior[1],",",posterior[2],")")))}
+        
+        yPriorCI = eval(parse(text = paste0("p",distPrior,"(xPriorCI,",prior[1],",",prior[2],")")))
+        yPosteriorCI = NULL
+        if(!is.null(posterior)){yPosteriorCI = eval(parse(text = paste0("p",distPosterior,"(xPosteriorCI,",posterior[1],",",posterior[2],")")))}
+        
+        if(logF){
+            xPrior = log(xPrior)
+            xPosterior = log(xPosterior)
+            xPriorCI = log(xPriorCI)
+            xPosteriorCI = log(xPosteriorCI)
+        }
+        
+        yLIM = range(c(yPrior, yPosterior), na.rm=T)
+        xLIM = range(c(xPrior, xPosterior))
+        plot(xPrior, yPrior, col=colA, type="l",ylim = yLIM,
+             xlab=xlab,ylab="",
+             xlim = xLIM, axes = F, main = "")
+        
+        
+        
+        polygon(x = c(xPriorCI, rev(xPriorCI)), c(yPriorCI, rep(0, length(yPriorCI))), col=adjustcolor(colA, alpha.f = 0.1), border=NA)
+        
+        if(!is.null(posterior)){
+            points(xPosterior, yPosterior, type="l", col = colB)
+            polygon(x = c(xPosteriorCI, rev(xPosteriorCI)), c(yPosteriorCI, rep(0, length(yPosteriorCI))), col=adjustcolor(colB, alpha.f = 0.1), border=NA)
+        }
+        axis(2)
+        idxMaxVar = which.min((yPrior-0.5)^2)
+        segments(xPrior[idxMaxVar], 0, xPrior[idxMaxVar], yPrior[idxMaxVar], col = colA)
+        points(xPrior[idxMaxVar], yPrior[idxMaxVar],col=colA, pch=16)
+        
+        if(!is.null(posterior)){
+            idxMaxVar_Post = which.min((yPosterior-0.5)^2)
+            segments(xPosterior[idxMaxVar_Post], 0, xPosterior[idxMaxVar_Post], yPosterior[idxMaxVar_Post], col = colB)
+            points(xPosterior[idxMaxVar_Post], yPosterior[idxMaxVar_Post],col=colB, pch=16)
+        }
+    }
+    
+    
+}
+
+#' @export
+corMargPlot = function(dataF, nbins = 20, likeValue = NULL,
+                       ncol = 5, marg = c(3,2,2,1),
+                       nContour = 100,cexP = 0.5,
+                       colPal = rev(c("#084594", "#2171B5", "#4292C6", "#6BAED6", "#9ECAE1", "#C6DBEF", "#DEEBF7", "#F7FBFF", "white")),mainNames = NULL, h = NULL) {
+    
+    nrowP = ncolP = ncol(dataF)
+    par(mfrow = c(nrowP, ncolP), mar = marg)
+    if(is.null(mainNames)){mainNames = names(dataF)}
+    for(i in 1:nrowP){
+        for(j in 1:ncolP){
+            if(i == j){
+                delta = diff(range(dataF[,i]))/10
+                hist(dataF[,i],
+                     breaks = seq(min(dataF[,i])-delta, max(dataF[,i])+delta, length.out = nbins),
+                     main = mainNames[i])
+            }
+            if(i < j){
+                if(!is.null(likeValue)){
+                    ii <- cut(likeValue, breaks = seq(min(likeValue), max(likeValue), len = ncol),
+                              include.lowest = TRUE)
+                    colP = colorRampPalette(colPal)(ncol-1)[ii]
+                }else{
+                    colP = "gray"
+                }
+                plot(dataF[,j], dataF[,i], col = colP, cex = cexP, pch = 16)
+            }
+            if(j < i){
+                if(is.null(h)){hP = c(diff(range(dataF[,j]))/10, diff(range(dataF[,i]))/10)}else{hP = c(h[j], h[i])}
+                contourData= kde2d(dataF[,j], dataF[,i], n = nContour, h = hP)
+                image(contourData$x, contourData$y, contourData$z, col = colorRampPalette(colPal)(ncol))
+                #      contour(contourData$x, contourData$y, contourData$z, col = colorRampPalette(colPal)(ncol), nlevels = ncol-1,add=T)
+            }
+        }
+    }
+}
