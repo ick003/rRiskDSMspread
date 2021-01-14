@@ -1,4 +1,4 @@
-##--- Run this script in order to the the mcmc inference ---##
+##--- Run this script in order to perform Bayesian model averaging ---##
 
 library(rRiskDSMspread)
 library(spreadR)
@@ -20,6 +20,9 @@ data_mrr_c_path <- system.file("extdata", "mrr_compounds_data.csv", package="rRi
 MRR_compounds <- readr::read_csv(data_mrr_c_path)
 
 # II - Define prior and likelihood functions
+
+mcmcobj = mcmc.list(mcmc(mcmc_chains[[1]]), mcmc(mcmc_chains[[2]]), mcmc(mcmc_chains[[3]]))
+mcmc_mat = as.matrix(mcmcobj)
 
 mPrior = mortalityParWT
 mPrior[3,1:2] = mPrior[3, 2:1]
@@ -217,74 +220,46 @@ LL_fun = function(par,df, dist = "", prior = FALSE, many = FALSE, trans_p = FALS
     return(ret)
 }
 
-# Testing some set of values:
+# III - Calculating the likelihood for a large number of samples to use in BMA calculation
 
-prior_fun(p = c(-3.63, 5.34, -1.54, 2.81, -1, -1, -1), trans_p = TRUE)
+X = mcmc_mat[,1:2]
+Sigma = cov(X)
+set.seed(2)
+sampleIDX = sample(2700, size = 500, replace = TRUE)
+LOGLIK = apply(mcmc_mat[!duplicated(mcmc_mat),][sampleIDX,], 1, function(x) LL_fun(x,df = mrr_data, dist = "", prior = FALSE, many = TRUE, trans_p = FALSE, print_par = FALSE))
 
-LL_fun(par = c(-3.63, 5.34, -1.54, 2.81, -1, -1, -1), df = mrr_data, trans_p = TRUE, many = TRUE)
+# IV - Calculate the BMA weights
 
-# III - Try an optimization routine
-# This takes quite a long time.
-
-resOptM = optim(par = c(-2.63, 10, -3.98, 5.21, -1.8, -3, -2),
-                fn = LL_fun, df = mrr_data, prior= FALSE, many = TRUE, trans_p = TRUE, control = list(maxit = 500), hessian = FALSE)
-
-
-# IV - Run the mcmc inference 
-# This also takes a long time. Please consider loading the chains from the data repository instead.
-
-mcmc_chains = list()
-system.time(
-    for(nc in 1:3){
-        mcmc_chains[nc] <- modMCMC(f = LL_fun,
-                        prior = prior_fun,
-                        p = c(0.12, 130, 0.10, 16, 0.20, 0.04, 0.30),
-                        df = mrr_data,
-                        many = TRUE,
-                        print_par = FALSE,
-                        niter = 7000,#10000
-                        burninlength = 1400,#2000
-                        updatecov = 1400,#200
-                        upper = c(1, 250, 0.5, 80, 0.5,0.5,0.5),
-                        lower = c(0.01, 50, 0.01, 5, 0.01, 0.01, 0.01),
-                        outputlength =3500)#5000
+Id = data.frame(MortExpID = rep(1:3,each=  2),DiffExpID = rep(1:2, 3), Evidence = NA)
+it = 0
+for(mi in 1:3){
+    for(di in 1:2){
+        it = it + 1
+        PRIOR = apply(mcmc_mat[!duplicated(mcmc_mat),][sampleIDX,], 1, function(x) prior_fun(p=x, trans_p = FALSE, mExp = mi, dExp = di))
+        MAP_value = max(exp(-(PRIOR+LOGLIK)/2))
+        Itemp = (2*pi*sqrt(det(Sigma))) * (MAP_value)
+        Id$Evidence[it] = Itemp
     }
-)
+}
+Diff_Weight = summarise(group_by(Id, DiffExpID), W = sum(Evidence))
+Mort_Weight = summarise(group_by(Id, MortExpID), W = sum(Evidence))
 
-# V - Plot the chain results
+# V - Re-draw the DSM priors using the BMA weights
 
-mcmcobj = mcmc.list(mcmc(mcmc_chains[[1]]), mcmc(mcmc_chains[[2]]), mcmc(mcmc_chains[[3]]))
-mcmc_mat = as.matrix(mcmcobj)
+deltaDSM <- (par2sample(par = diffusionParDSM, type = "diffusion", 
+                       n = 1e4, weights = Diff_Weight$W / sum(Diff_Weight$W))*1000)^2 / (3.14)
+muDSM <- par2sample(par = mortalityParDSM, type = "mortality", 
+                   n = 1e4, weights = Mort_Weight$W / sum(Mort_Weight$W))
 
-corMargPlot(mcmc_mat[!duplicated(mcmc_mat),1:4])
-corMargPlot(mcmc_mat[!duplicated(mcmc_mat),5:7])
+# Not for alpha and sigma obviously, just use the parameters distribution from the inference
 
-# VI - Plot prior and posteriors
+alphaWT_DSM <- (mcmc_mat[!duplicated(mcmc_mat),][sample(nrow(mcmc_mat[!duplicated(mcmc_mat),]), size = 1e4, replace = TRUE),3])
 
-sampMortRateWT <- par2sample(par = mortalityParWT, type = "mortality", n = 1e4, weights = rep(1, nrow(mortalityParWT)))
-diffusionVarWT <- (par2sample(par = diffusionParWT, type = "diffusion", n = 1e4, weights = rep(1, nrow(diffusionParWT)))*1000)^2 / (4 * 1) 
-swarmAvarSM = rlnorm(1e4, -2, 1)
-swarmSvarSM = rlnorm(1e4, 3.5, 4)
+sigmaWT_DSM <- (mcmc_mat[!duplicated(mcmc_mat),][sample(nrow(mcmc_mat[!duplicated(mcmc_mat),]), size = 1e4, replace = TRUE),4])
 
-post_diffusionVarWT = mcmc_mat[,2]
-post_sampMortRateWT = mcmc_mat[,1]
-post_swarmAvarSM = mcmc_mat[,3]
-post_swarmSvarSM = mcmc_mat[,4]
+parDSM = data.frame(delta = deltaDSM, mu = muDSM, alpha = alphaWT_DSM, sigma = sigmaWT_DSM)
 
-par(mfrow=c(2,2), mar = c(4,2,1,1))
-postPlot(diffusionVarWT, posterior = post_diffusionVarWT,xRange = c(0.1,0.9),
-         logF = TRUE, xlab = expression(paste("D - [",paste("m"^"2","/day"), "]")), vertL = "mean")
-axis(1, at = log(c(1 %o% 10^(-0:8))), labels = c(1 %o% 10^(-0:8)))
-postPlot(sampMortRateWT, posterior = post_sampMortRateWT,xRange = c(0.1,0.9),
-         logF = TRUE, xlab = expression(paste(mu," - [",paste("Day"^"-1"), "]")), vertL = "mean")
-axis(1, at = log(c(seq(0,0.2,0.05),seq(0.2,2,0.2))), labels = c(seq(0,0.2,0.05), seq(0.2,2,0.2)))
-postPlot(swarmAvarSM, posterior = post_swarmAvarSM, xRange = c(0.0001,0.9999),
-         logF = TRUE, xlab = expression(paste(alpha," - [",paste("m"^"-1"),paste("R"^"-1"), "]")), vertL = "mean")
-axis(1, at = log(c(1 %o% 10^(-3:8))), labels = c(1 %o% 10^(-3:8)))
-postPlot(swarmSvarSM, posterior = post_swarmSvarSM, xRange = c(0.0001,0.9999),
-         logF = TRUE, xlab = expression(paste(sigma," - [",paste("m"), "]")), vertL = "mean")
-axis(1, at = log(c(1 %o% 10^(-3:8))),  labels = c(1 %o% 10^(-3:8)))
 
-# VII - Save the data to re-use in later scripts
+# VI - Save the data to re-use in later scripts
 
-saveRDS(mcmc_chains, file = "/inst/extdata/mcmc_chains.rds")
+saveRDS(parDSM, file = "/inst/extdata/parDSM.rds")
