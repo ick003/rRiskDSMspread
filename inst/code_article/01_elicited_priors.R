@@ -129,3 +129,13 @@ saveRDS(mortalityParWT, file = "inst/extdata/mortalityParWT.rds")
 saveRDS(diffusionParSM, file = "inst/extdata/diffusionParDSM.rds")
 saveRDS(diffusionParWT, file = "inst/extdata/diffusionParWT.rds")
 
+# IX - Plotting all priors together
+
+swarmAvarSM = rlnorm(1e4, )
+swarmSvarSM = rlnorm(1e4, )
+
+par(mfrow=c(1,2))
+postPlot(diffusionVarWT, logF = TRUE, xlab = expression(paste("D - [",paste("m"^"2","/day"), "]")))
+axis(1, at = log(c(1 %o% 10^(-3:8))), labels = c(1 %o% 10^(-3:8)))
+postPlot(sampMortRateWT, logF = TRUE, xlab = expression(paste(mu," - [",paste("Day"^"-1"), "]")))
+axis(1, at = log(c(seq(0,0.2,0.05),seq(0.2,2,0.2))), labels = c(seq(0,0.2,0.05), seq(0.2,2,0.2)))
