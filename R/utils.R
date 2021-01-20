@@ -175,7 +175,7 @@ postPlot = function(prior,posterior = NULL, logF = FALSE, samples = TRUE, distPr
 }
 
 
-elicitedColorScale <-brewer.pal(5,"Dark2")
+elicitedColorScale <- RColorBrewer::brewer.pal(5,"Dark2")
 
 colPrior = "darkgreen"
 colPosterior = "darkblue"
