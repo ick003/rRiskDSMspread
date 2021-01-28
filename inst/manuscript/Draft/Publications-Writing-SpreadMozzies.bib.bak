@@ -542,16 +542,14 @@ title = {{Levy-taxis: a novel search strategy for finding odor plumes in turbule
 volume = {42},
 year = {2009}
 }
-
-@TechReport{Hayes2015a,
-  author      = {Hayes, Keith R. and Barry, Simon and Beebe, Nigel and Dambacher, Jeffrey M. and Barro, Paul De and Ferson, Scott and Ford, Jessica and Foster, Scott and {Goncalves da Silva}, Anders and Hosack, Geoffrey R. and Peel, David and Thresher, Ronald},
-  institution = {CSIRO},
-  title       = {{Risk Assessment for Controlling Mosquito Vectors with Engineered Nucleases: Sterile Male Construct Final report}},
-  year        = {2015},
-  doi         = {10.13140/RG.2.2.17799.39849},
-  file        = {:home/ick003/Documents/Mendeley Desktop/Hayes et al._2015_Risk Assessment for Controlling Mosquito Vectors with Engineered Nucleases Sterile Male Construct Final report.pdf:pdf},
-  pages       = {196},
-  url         = {https://fnih.org/what-we-do/geneconvene/impact/technical-advice},
+@techreport{Hayes2015a,
+author = {Hayes, Keith R and Barry, Simon and Beebe, Nigel and Dambacher, Jeffrey M and Barro, Paul De and Ferson, Scott and Ford, Jessica and Foster, Scott and {Goncalves da Silva}, Anders and Hosack, Geoffrey R and Peel, David and Thresher, Ronald},
+doi = {10.13140/RG.2.2.17799.39849},
+file = {:home/ick003/Documents/Mendeley Desktop/Hayes et al._2015_Risk Assessment for Controlling Mosquito Vectors with Engineered Nucleases Sterile Male Construct Final report.pdf:pdf},
+institution = {CSIRO},
+pages = {196},
+title = {{Risk Assessment for Controlling Mosquito Vectors with Engineered Nucleases: Sterile Male Construct Final report}},
+year = {2015}
 }
 @article{McIver1989,
 abstract = {The effects of release rates of 0, 250, 500, 1,000 and 4,000 ml/min on the range of attraction of carbon dioxide to some southwestern Ontario mosquito species was determined using ramp traps placed at 3, 7, 11, 15 and 19 m from a central pressurized cylinder. For female Aedes vexans, spring Aedes spp. and Anopheles walkeri, an increase in the release rate of CO2 from 1,000 to 4,000 ml/min resulted in extension of the range of attractiveness from between 3-7 m to between 7-11 m; rates of 500 and 250 ml/min did result in an increase in number of mosquitoes in the traps. Correspondingly, significantly more mosquitoes were caught in the traps at 3 m when the rate was increased to 1,000 ml/min from 500 ml/min. For Ae. vexans, 4,000 ml/min of CO2 attracted more mosquitoes to the 7 m traps than 1,000 ml/min. In this work carbon dioxide did not result in an increase in the number of Culiseta inornata, Cs. morsitans and Culex restuans and Cx. pipiens in the traps.},
