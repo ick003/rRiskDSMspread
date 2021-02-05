@@ -280,7 +280,7 @@ post_sampMortRateWT = mcmc_mat[,1]
 post_swarmAvarSM = mcmc_mat[,3]
 post_swarmSvarSM = mcmc_mat[,4]
 
-par(mar = c(2,2,1,1))
+par(mar = c(4,2,1,1))
 layout(matrix(c(1,2,3,4, 5, 5), ncol=2, byrow=TRUE), heights=c(2,2, 1))
 postPlot(diffusionVarWT, posterior = post_diffusionVarWT,xRange = c(0.1,0.9),
          logF = TRUE, xlab = expression(paste("D - [",paste("m"^"2","/day"), "]")), vertL = "mean")
