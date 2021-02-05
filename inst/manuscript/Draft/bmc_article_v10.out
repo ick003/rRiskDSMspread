@@ -1,0 +1,20 @@
+\BOOKMARK [1][-]{section*.1}{Abstract}{}% 1
+\BOOKMARK [1][-]{section.1}{Background}{}% 2
+\BOOKMARK [1][-]{section.2}{Methods}{}% 3
+\BOOKMARK [2][-]{subsection.2.1}{PDE model}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.2}{Data}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.3}{Priors}{section.2}% 6
+\BOOKMARK [3][-]{subsubsection.2.3.1}{Process model}{subsection.2.3}% 7
+\BOOKMARK [3][-]{subsubsection.2.3.2}{Observation model}{subsection.2.3}% 8
+\BOOKMARK [2][-]{subsection.2.4}{Inference}{section.2}% 9
+\BOOKMARK [3][-]{subsubsection.2.4.1}{WT male parameters}{subsection.2.4}% 10
+\BOOKMARK [2][-]{subsection.2.5}{Posterior prediction validation}{section.2}% 11
+\BOOKMARK [2][-]{subsection.2.6}{Bayesian model averaging}{section.2}% 12
+\BOOKMARK [1][-]{section.3}{Results}{}% 13
+\BOOKMARK [2][-]{subsection.3.1}{WT parameters}{section.3}% 14
+\BOOKMARK [2][-]{subsection.3.2}{Spread and persistence of male WT mosquitoes}{section.3}% 15
+\BOOKMARK [2][-]{subsection.3.3}{DSM parameters}{section.3}% 16
+\BOOKMARK [2][-]{subsection.3.4}{Spread and persistence of male DSM mosquitoes}{section.3}% 17
+\BOOKMARK [1][-]{section.4}{Discussion}{}% 18
+\BOOKMARK [2][-]{subsection.4.1}{Additional file 1 \205 Elicitation process, questions and answers}{section.4}% 19
+\BOOKMARK [2][-]{subsection.4.2}{Additional file 2 \205 Derivation of the relationship between the diffusion coefficient and the average dispersal distance}{section.4}% 20

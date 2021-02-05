@@ -1,0 +1,285 @@
+\begin{thebibliography}{10}
+
+\bibitem{WHO2019}
+{World Health Organisation}.
+\newblock {World Malaria Report 2019}.
+\newblock World Health Organisation, Geneva, Switzerland.; 2019.
+\newblock Available from:
+  \url{https://www.who.int/publications/i/item/world-malaria-report-2019}.
+
+\bibitem{Gabrieli2014}
+Gabrieli P, Smidler A, Catteruccia F.
+\newblock Engineering the control of mosquito-borne infectious diseases.
+\newblock Genome Biology. 2014 Nov;15(11):535.
+\newblock Available from: \url{https://doi.org/10.1186/s13059-014-0535-7}.
+
+\bibitem{Beaghton2017}
+Beaghton A, Hammond A, Nolan T, Crisanti A, Godfray HCJ, Burt A.
+\newblock Requirements for Driving Antipathogen Effector Genes into Populations
+  of Disease Vectors by Homing.
+\newblock Genetics. 2017;205(4):1587--1596.
+\newblock Available from: \url{https://www.genetics.org/content/205/4/1587}.
+
+\bibitem{CarballarLejarazu2020}
+Carballar-Lejaraz\'{u} R, Ogaugwu C, Tushar T, Kelsey A, Pham TB, Murphy J,
+  et~al.
+\newblock {Next-generation gene drive for population modification of the
+  malaria vector mosquito, \textit{Anopheles gambiae}}.
+\newblock Proceedings of the National Academy of Sciences. 2020
+  Sep;117(37):22805--22814.
+
+\bibitem{Simoni2020}
+Simoni A, Hammond AM, Beaghton AK, Galizi R, Taxiarchi C, Kyrou K, et~al.
+\newblock {A male-biased sex-distorter gene drive for the human malaria vector
+  \textit{Anopheles gambiae}}.
+\newblock Nature Biotechnology. 2020;38(9):1054--1060.
+\newblock Available from: \url{https://doi.org/10.1038/s41587-020-0508-1}.
+
+\bibitem{Ledord2015}
+Ledord H, Callaway E.
+\newblock {`Gene drive' mosquitoes engineered to fight malaria}.
+\newblock Nature. 2015 Nov;.
+
+\bibitem{Champer2016}
+Champer J, Buchman A, Akbari OS.
+\newblock Cheating evolution: engineering gene drives to manipulate the fate of
+  wild populations.
+\newblock Nature Reviews Genetics. 2016;17(3):146--159.
+\newblock Available from: \url{https://doi.org/10.1038/nrg.2015.34}.
+
+\bibitem{Akbari2015}
+Akbari OS, Bellen HJ, Bier E, Bullock SL, Burt A, Church GM, et~al.
+\newblock Safeguarding gene drive experiments in the laboratory.
+\newblock Science. 2015;349(6251):927--929.
+\newblock Available from:
+  \url{https://science.sciencemag.org/content/349/6251/927}.
+
+\bibitem{WHOTDRFNIH2014}
+{WHO-TDR \&FNIH}.
+\newblock {Guidance Framework for Testing of Genetically Modified Mosquitoes}.
+\newblock World Health Organization-TDR and the Foundation for the National
+  Institutes of Health, Geneva, Switzerland; 2014.
+\newblock Available from:
+  \url{{http://www.who.int/tdr/publications/year/2014/guide-fmrk-gm-mosquit/en/}}.
+
+\bibitem{NASEM2016}
+{National Academies of Sciences Engineering and Medicine}.
+\newblock {Gene Drives on the Horizon: Advancing Science, Navigating
+  Uncertainty, and Aligning Research with Public Values}.
+\newblock National Academies of Sciences Engineering and Medicine, The National
+  Academies Press, Washington DC, USA; 2016.
+
+\bibitem{Huestis2019}
+Huestis DL, Dao A, Diallo M, Sanogo ZL, Samake D, Yaro AS, et~al.
+\newblock {Windborne long-distance migration of malaria mosquitoes in the
+  Sahel}.
+\newblock Nature. 2019;574(7778):404--408.
+\newblock Available from: \url{https://doi.org/10.1038/s41586-019-1622-4}.
+
+\bibitem{Klein2012}
+Klein TA, Windbichler N, Deredec A, Burt A, Benedict MQ.
+\newblock {Infertility resulting from transgenic I-PpoI male \textit{Anopheles
+  gambiae} in large cage trials}.
+\newblock Pathogens and Global Health. 2012;106(1):20--31.
+\newblock Available from:
+  \url{http://dx.doi.org/10.1179/2047773212Y.0000000003}.
+
+\bibitem{Galizi2014}
+Galizi R, Doyle LA, Menichelli M, Bernardini F, Deredec A, Burt A, et~al.
+\newblock A synthetic sex ratio distortion system for the control of the human
+  malaria mosquito.
+\newblock Nature Communications. 2014;5.
+
+\bibitem{Nash2019}
+Nash A, Urdaneta GM, Beaghton AK, Hoermann A, Papathanos PA, Christophides GK,
+  et~al.
+\newblock Integral gene drives for population replacement.
+\newblock Biology Open. 2019;8(1).
+\newblock Available from:
+  \url{https://bio.biologists.org/content/8/1/bio037762}.
+
+\bibitem{Beaghton2017a}
+Beaghton A, Beaghton PJ, Burt A.
+\newblock {Vector control with driving Y chromosomes: Modelling the evolution
+  of resistance}.
+\newblock Malaria Journal. 2017;16(1):286.
+\newblock Available from: \url{https://doi.org/10.1186/s12936-017-1932-7}.
+
+\bibitem{North2019}
+North AR, Burt A, Godfray HCJ.
+\newblock Modelling the potential of genetic control of malaria mosquitoes at
+  national scale.
+\newblock BMC Biology. 2019;17(1):26.
+\newblock Available from: \url{https://doi.org/10.1186/s12915-019-0645-5}.
+
+\bibitem{Dufourd2012}
+Dufourd C, Dumont Y.
+\newblock {Modeling and Simulations of mosquito dispersal. The case of Aedes
+  albopictus}.
+\newblock Biomath. 2012;1(2):1--7.
+
+\bibitem{Hayes2015a}
+Hayes KR, Barry S, Beebe N, Dambacher JM, Barro PD, Ferson S, et~al.
+\newblock {Risk Assessment for Controlling Mosquito Vectors with Engineered
+  Nucleases: Sterile Male Construct Final report}.
+\newblock CSIRO; 2015.
+\newblock Available from:
+  \url{https://fnih.org/what-we-do/geneconvene/impact/technical-advice}.
+
+\bibitem{Epopa2017}
+Epopa PS, Millogo AA, Collins CM, North A, Tripet F, Benedict MQ, et~al.
+\newblock {The use of sequential mark-release-recapture experiments to estimate
+  population size, survival and dispersal of male mosquitoes of the Anopheles
+  gambiae complex in Bana, a west African humid savannah village}.
+\newblock Parasites \& Vectors. 2017;10(1):376.
+\newblock Available from:
+  \url{http://parasitesandvectors.biomedcentral.com/articles/10.1186/s13071-017-2310-6}.
+
+\bibitem{Cummins2012}
+Cummins B, Cortez R, Foppa IM, Walbeck J, Hyman JM.
+\newblock {A spatial model of mosquito host-seeking behavior}.
+\newblock PLoS Computational Biology. 2012;8(5).
+
+\bibitem{Pasternak2009}
+Pasternak Z, Bartumeus F, Grasso FW.
+\newblock {Levy-taxis: a novel search strategy for finding odor plumes in
+  turbulent flow-dominated environments}.
+\newblock Journal of Physics A: Mathematical and Theoretical.
+  2009;42(43):434010.
+
+\bibitem{DeJong1995}
+de~Jong R, Knols BGJ.
+\newblock {Olfactory responses of host-seeking Anopheles gambiae s. s. Giles
+  (Diptera: Culicidae)}.
+\newblock Acta Tropica. 1995;59:333--335.
+
+\bibitem{Majeed2017}
+Majeed S, Hill SR, Dekker T.
+\newblock {Detection and perception of generic host volatiles by mosquitoes :
+  responses to $CO_2$ constrains host-seeking behaviour}.
+\newblock Royal Society open science. 2017;4.
+
+\bibitem{Diabate2015}
+Diabate A, Tripet F.
+\newblock Targeting male mosquito mating behaviour for malaria control.
+\newblock Parasites \& Vectors. 2015 Jun;8(26113015):347--347.
+\newblock Available from:
+  \url{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4485859/}.
+
+\bibitem{Moorcroft2008}
+Moorcroft PR, Barnett A.
+\newblock MECHANISTIC HOME RANGE MODELS AND RESOURCE SELECTION ANALYSIS: A
+  RECONCILIATION AND UNIFICATION.
+\newblock Ecology. 2008;89(4):1112--1119.
+\newblock Available from:
+  \url{https://esajournals.onlinelibrary.wiley.com/doi/abs/10.1890/06-1985.1}.
+
+\bibitem{Lindley2000}
+Lindley DV.
+\newblock {The Philosophy of Statistics}.
+\newblock Journal of the Royal Statistical Society: Series D (The
+  Statistician). 2000;49(3):293--337.
+\newblock Available from:
+  \url{https://rss.onlinelibrary.wiley.com/doi/abs/10.1111/1467-9884.00238}.
+
+\bibitem{McIver1989}
+McIver SB, McElligott PE.
+\newblock {Effects of release rates on the range of attraction of carbon
+  dioxide to some southwestern Ontario mosquito species.}
+\newblock Journal of the American Mosquito Control Association. 1989;5(1).
+
+\bibitem{Gillies1972}
+Gillies MT, Wilkes TJ.
+\newblock {The range of attraction of animal baits and carbon dioxide for
+  mosquitoes. Studies in a freshwater area of West Africa}.
+\newblock Bulletin of Entomological Research. 1972;61(03):389.
+
+\bibitem{Zhu2015}
+Zhu L, Qualls WA, Marshall JM, Arheart KL, DeAngelis DL, McManus JW, et~al.
+\newblock {A spatial individual-based model predicting a great impact of
+  copious sugar sources and resting sites on survival of Anopheles gambiae and
+  malaria parasite transmission}.
+\newblock Malaria Journal. 2015;14(1):59.
+
+\bibitem{Martin2005a}
+Martin TG, Wintle Ba, Rhodes JR, Kuhnert PM, Field Sa, Low-Choy SJ, et~al.
+\newblock {Zero tolerance ecology: improving ecological inference by modelling
+  the source of zero observations}.
+\newblock Ecology Letters. 2005;8(11):1235--1246.
+
+\bibitem{McGoff2012a}
+McGoff K, Mukherjee S, Pillai N.
+\newblock {Statistical inference for dynamical systems: a review}.
+\newblock Statistics Surveys. 2015;9:209--252.
+\newblock Available from: \url{http://arxiv.org/abs/1204.6265}.
+
+\bibitem{Chkrebtii2016}
+Chkrebtii O, Campbell D, Calderhead B, Girolami M.
+\newblock {Bayesian Solution Uncertainty Quantification for Differential
+  Equations}.
+\newblock Bayesian Analysis. 2016;11(4):1269--1273.
+\newblock Available from: \url{http://projecteuclid.org/euclid.ba/1480474948}.
+
+\bibitem{Wikle2003}
+Wikle CK.
+\newblock {Hierarchical Bayesian Models for Predicting the Spread of Ecological
+  Processes}.
+\newblock Ecology. 2003;84(6):1382--1394.
+
+\bibitem{Ruggeri2017}
+Ruggeri F, Sawlan Z, Scavino M, Tempone R.
+\newblock {A hierarchical Bayesian setting for an inverse problem in linear
+  parabolic PDEs with noisy boundary conditions}.
+\newblock Bayesian Analysis. 2017;12(2):407--433.
+
+\bibitem{Haario2001a}
+Haario H, Saksman E, Tamminen J.
+\newblock {An adaptive Metropolis algorithm}.
+\newblock Bernoulli. 2001;7(2):223--242.
+\newblock Available from: \url{http://projecteuclid.org/euclid.bj/1080222083}.
+
+\bibitem{Soetaert2010}
+Soetaert K.
+\newblock {R Package FME: Inverse Modelling, Sensitivity, Monte Carlo–Applied
+  to a Dynamic Simulation Model}.
+\newblock Relation. 2010;(Soetaert 2009):1--12.
+\newblock Available from:
+  \url{ftp://gomez.heanet.ie/disk1/CRAN/web/packages/FME/vignettes/FMEdyna.pdf}.
+
+\bibitem{Gelman2014}
+Gelman A, Carlin JB, Stern HS, Dunson DB, Vehtari A, Rubin DB.
+\newblock Bayesian data analysis.
+\newblock CRC press Boca Raton, FL; 2014.
+
+\bibitem{robert2001bayesian}
+Robert CP.
+\newblock {The Bayesian Choice: From Decision-Theoretic Foundations to
+  Computational Implementation}.
+\newblock 2nd ed. Springer Science \& Business Media; 2007.
+
+\bibitem{Kass1995b}
+Kass RE, Raftery AE.
+\newblock {Bayes Factor}.
+\newblock Journal of American Statistical Association. 1995;90(430):773--795.
+
+\bibitem{Hosack2020}
+Hosack GR, Ickowicz A, Hayes KR.
+\newblock {Quantifying the risk of vector-borne disease transmission
+  attributable to genetically modified vectors}. 2020;.
+
+\bibitem{Hayes2018}
+Hayes KR, Hosack GR, Ickowicz A, Foster S, Peel D, Ford J, et~al.
+\newblock {Risk Assessment for Controlling Mosquito Vectors with Engineered
+  Nucleases: Controlled field release for Sterile Male Construct}.
+\newblock CSIRO, Hobart, Australia, 150pp.; 2018.
+\newblock Available from:
+  \url{https://fnih.org/what-we-do/geneconvene/impact/technical-advice}.
+
+\bibitem{Beeton2020}
+Beeton NJ, Hosack GR, Wilkins A, Forbes LK, Ickowicz A, Hayes KR.
+\newblock Modelling competition between hybridising subspecies.
+\newblock Journal of Theoretical Biology. 2020;486:110072.
+\newblock Available from:
+  \url{http://www.sciencedirect.com/science/article/pii/S0022519319304412}.
+
+\end{thebibliography}
