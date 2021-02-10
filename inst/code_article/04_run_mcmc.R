@@ -4,6 +4,7 @@ library(rRiskDSMspread)
 library(spreadR)
 library(ggplot2)
 library(abind)
+library(coda)
 
 # I - Load the data
 
@@ -252,6 +253,8 @@ system.time(
 )
 
 # V - Plot the chain results
+
+mcmc_chains <- readRDS("inst/extdata/mcmc_chains.rds")
 
 mcmcobj = mcmc.list(mcmc(mcmc_chains[[1]]), mcmc(mcmc_chains[[2]]), mcmc(mcmc_chains[[3]]))
 mcmc_mat = as.matrix(mcmcobj)

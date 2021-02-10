@@ -3,6 +3,7 @@
 library(rRiskDSMspread)
 library(spreadR)
 library(ggplot2)
+library(dplyr)
 
 # I - Load the data
 
@@ -30,12 +31,14 @@ DateMRR = DateMRR[ DateMRR$Cap_Date == ave(DateMRR$Cap_Date, DateMRR$MRR, FUN=mi
 names(DateMRR)[2] <- c("Release date")
 names(LocMRR) = c("MRR","Release site", "Longitude", "Latitude", "Number released")
 
+
 dist_per_release <- full_join(LocMRR, MRR, by  = c("MRR", "Release site" = "relSite")) %>% 
     rename("relSite" = "Release site") %>%
-    filter(NumMoz > 0)
-dist_per_release$dist = geosphere::distHaversine(cbind(dist_per_release$Longitude, dist_per_release$Latitude), cbind(dist_per_release$XcoordGPS, dist_per_release$YcoordGPS))
+    filter(N_mos > 0)
 
-res <- dist_per_release %>% group_by(MRR, relSite) %>% summarise(avg_dist = sum(dist*NumMoz) / sum(NumMoz))
+dist_per_release$dist = geosphere::distHaversine(cbind(dist_per_release$Longitude, dist_per_release$Latitude), cbind(dist_per_release$Long_CP, dist_per_release$Lat_CP))
+res <- dist_per_release %>% group_by(MRR, relSite) %>% summarise(avg_dist = sum(dist*N_mos) / sum(N_mos))
+
 
 distBoundary2Swarm = 400 # distance (in m)
 xlimmy.orig <- range(MRR_swarm$X_m)
@@ -126,3 +129,4 @@ ggplot(mrr_data) + geom_point(aes(x = DayDiff, y = N_mos, col = Col_Meth)) + fac
 saveRDS(grid2D, file = "inst/extdata/grid2D.rds")
 saveRDS(grid2D_release_sites, file = "inst/extdata/grid2D_release_sites.rds")
 saveRDS(mrr_data, file = "inst/extdata/mrr_data.rds")
+

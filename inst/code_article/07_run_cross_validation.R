@@ -4,6 +4,8 @@ library(rRiskDSMspread)
 library(spreadR)
 library(ggplot2)
 library(scales)
+library(dplyr)
+library(coda)
 
 # I - Load the data
 
@@ -22,9 +24,12 @@ LocMRR <- readr::read_csv(data_mrr_l_path)
 mrr_data <- readRDS("inst/extdata/mrr_data.rds")
 mcmc_chains <- readRDS("./inst/extdata/mcmc_chains.rds")
 
+data_mrr_path <- system.file("extdata", "mrr_data.csv", package="rRiskDSMspread")
+
 # II - Setting up MRR 5 data 
 
-MRR = MRR[which(MRR$MRR == 5),]
+MRR <- readr::read_csv(data_mrr_path)
+MRR = MRR %>% filter(.data$MRR == 5)
 MRR$Date = as.Date(as.character(MRR$Date), format="%Y-%m-%d")
 MRR$Date = as.character(MRR$Date)
 names(MRR)<- c("MRR", "Cap_Date","Long_CP", "Lat_CP", "Col_Meth","cVar", 
@@ -63,19 +68,19 @@ mcmc_mat = as.matrix(mcmcobj)
 
 
 
-nSim = 1000
+nSim = 10
 
 paramL = releaseSiteL = releaseSizeL = list()
 for(j in 1:nSim){
     idxJ = sample(nrow(mcmc_mat),1)
-    tmp = list(delta=exp(mcmc_mat[idxJ,2]),alpha=exp(mcmc_mat[idxJ,3]),beta=1,nu=0,mu=exp(mcmc_mat[idxJ,1]))
+    tmp = list(delta=mcmc_mat[idxJ,2],alpha=mcmc_mat[idxJ,3],beta=1,nu=0,mu=mcmc_mat[idxJ,1])
     paramL[[length(paramL)+1]] = tmp
     releaseSiteL[[length(paramL)]] = releaseSitesCoded
     releaseSizeL[[length(paramL)]] = 5992
     
 }
 prep.covars <- spreadR::prepare.covariates(grid=grid2D, 
-                                           covariates=list(as.data.frame(MRR_swarm[,c("X_m","Y_m")])), sigma=mean(exp(mcmc_mat[,4])))
+                                           covariates=list(as.data.frame(MRR_swarm[,c("X_m","Y_m")])), sigma=mean((mcmc_mat[,4])))
 
 RelS = 1
 lastDaySim = as.numeric(max(MRR$DayDiff[MRR$Col_Meth == "Swarm"]))+1
@@ -102,6 +107,7 @@ IDs5 <- as.numeric( class::knn1( expand.grid( grid2D$x.mid, grid2D$y.mid), locat
 MRR$Loc_IDs = IDs5
 
 dfObs = ddply(MRR, .(relSite,Col_Meth, DayDiff, Loc_IDs),  summarize, N_mos = sum(N_mos))
+dfObs <- MRR %>% group_by(relSite, Col_Meth, DayDiff, Loc_IDs) %>% summarise(N_mos = sum(N_mos)) %>% ungroup()
 idxSwarm = which(MRR$Col_Meth %in% "Swarm")
 IdsSwarm5 = unique(dfObs$Loc_IDs[intersect(idxSwarm, which(dfObs$Col_Meth %in% "Swarm" & dfObs$N_mos > 0))])
 
@@ -113,14 +119,20 @@ attr(simMRR5_CV$mods,"times") <- timesSim
 # VI - Plot comparison
 
 par(mfrow = c(5,3), mar = c(2,2,1,1))
-prob_catch_swarm = mean(exp(mcmc_mat[,7]) / (1 + exp(mcmc_mat[,7]) ))
+prob_catch_swarm = mean((mcmc_mat[,7]) / (1 + (mcmc_mat[,7]) ))
 for(i in 1:14){
-    plot(timesSim,simMRR5_CV$mods[,i,1]*prob_catch_swarm, type = "l", ylim = range(simMRR5_CV$mods[,i,]*prob_catch_swarm), 
-         col = alpha(rgb(0,0,0), 0.01))
+    plot(timesSim,simMRR5_CV$mods[,i,1]*prob_catch_swarm, type = "l", 
+         ylim = range(simMRR5_CV$mods[,i,]*prob_catch_swarm) + c(0,1), 
+         col = alpha(rgb(0,0,0), 0.1))
+    polygon(x = c(timesSim, rev(timesSim)), 
+            y = c(qpois(0.05, rowMeans(simMRR5_CV$mods[,i,]*prob_catch_swarm)), 
+                  rev(qpois(0.95, rowMeans(simMRR5_CV$mods[,i,]*prob_catch_swarm)))), 
+            border = NA, col = alpha(rgb(1,0.6,0),0.35))
     for(j in 2:dim(simMRR5_CV$mods)[3]){
-        points(timesSim, simMRR5_CV$mods[,i,j]*prob_catch_swarm, type=  "l", col = alpha(rgb(0,0,0), 0.01))
+        points(timesSim, simMRR5_CV$mods[,i,j]*prob_catch_swarm, type=  "l", col = alpha(rgb(0,0,0), 0.1))
     }
     points(timesSim, rowMeans(simMRR5_CV$mods[,i,]*prob_catch_swarm), type = "l", lwd = 2)
+    
     CV_OBS = dfObs[dfObs$Loc_IDs == IdsSwarm5[i],]
     points(CV_OBS$DayDiff+0.125, CV_OBS$N_mos, col = "red")
 }

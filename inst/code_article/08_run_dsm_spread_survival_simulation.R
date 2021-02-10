@@ -3,9 +3,11 @@
 library(rRiskDSMspread)
 library(spreadR)
 library(ggplot2)
+library(stringr)
 
 # I - Load the data
 
+data_mrr_path <- system.file("extdata", "mrr_data.csv", package="rRiskDSMspread")
 grid2D <- readRDS("inst/extdata/grid2D.rds")
 grid2D_release_sites <- readRDS("inst/extdata/grid2D_release_sites.rds")
 mortalityParDSM <- readRDS("inst/extdata/mortalityParDSM.rds")
@@ -16,9 +18,10 @@ data_mrr_s_path <- system.file("extdata", "mrr_swarms_data.csv", package="rRiskD
 MRR_swarm <- readr::read_csv(data_mrr_s_path)
 mcmc_chains <- readRDS("inst/extdata/mcmc_chains.rds")
 parDSM <- readRDS("inst/extdata/parDSM.rds")
-
+data_mrr_l_path <- system.file("extdata", "mrr_location_data.csv", package="rRiskDSMspread")
 # II - Setup simulation environmental conditions
 
+MRR <- readr::read_csv(data_mrr_path)
 MRR = MRR[which(MRR$MRR == 1),]
 MRR$Date = as.Date(as.character(MRR$Date), format="%Y-%m-%d")
 MRR$Date = as.character(MRR$Date)
@@ -28,6 +31,8 @@ names(MRR)<- c("MRR", "Cap_Date","Long_CP", "Lat_CP", "Col_Meth","cVar",
 DateMRR = unique(MRR[,c(1,2)])
 DateMRR = DateMRR[ DateMRR$Cap_Date == ave(DateMRR$Cap_Date, DateMRR$MRR, FUN=min), ]
 names(DateMRR)[2] <- c("Release date")
+
+LocMRR <- readr::read_csv(data_mrr_l_path)
 names(LocMRR) = c("MRR","Release site", "Longitude", "Latitude", "Number released")
 
 MRR$DayDiff =  as.Date(MRR$Cap_Date) - as.Date(DateMRR$`Release date`)
@@ -57,7 +62,7 @@ for(rel in 1:1){
 
 set.seed(1)
 
-nSim = nrow(parDSM)
+nSim = nrow(parDSM)/100
 
 paramL = releaseSiteL = releaseSizeL = list()
 for(j in 1:nSim){
@@ -96,19 +101,19 @@ par(mar = c(4.5,4.5,1,1))
 layout(matrix(c(1,2), 2, 1, byrow = TRUE),
        widths=c(1), heights=c(3,1))
 TrFun = function(x){log(x)}
-plot(timesSim,TrFun(5000*exp(-mean(parSM$mu[1:nSim])*timesSim)), type="l", xlab = "Days since release", ylab=expression(paste("Expected # sterile males (",lambda, ")")), 
+plot(timesSim,TrFun(5000*exp(-mean(parDSM$mu[1:nSim])*timesSim)), type="l", xlab = "Days since release", ylab=expression(paste("Expected # sterile males (",lambda, ")")), 
      bty='n', axes=F, col = rgb(1,0,0,0.5), pch=3, cex=0.5, ylim = TrFun(c(1e-1, 6000)))
 
 axis(1, at = seq(0,30,length.out = 11));
 axis(2, at = TrFun(c(1 %o% 10^(-1:3))), labels = c(1 %o% 10^(-1:3)), las=1, cex.axis=0.75)
 for(i in 1:nSim){
-    points(timesSim,TrFun(5000*exp(-parSM$mu[i]*timesSim)), type="l", col=rgb(0,0,0,0.05), pch=3, cex=0.2)
+    points(timesSim,TrFun(5000*exp(-parDSM$mu[i]*timesSim)), type="l", col=rgb(0,0,0,0.05), pch=3, cex=0.2)
     #  points(attr(simM$mods,"times"),rowSums(simM$mods[, -1,i]), col = rgb(0,0,0,0.1), pch=3, cex=0.5)
 }
-points(timesSim,TrFun(5000*exp(-mean(parSM$mu)*timesSim)), type="l",col = rgb(1,0,0,1), pch=3, cex=0.5)
-points(timesSim,TrFun(5000*exp(-quantile(parSM$mu,0.5)*timesSim)), type="l",col = rgb(0,0,1,0.6), pch=3, cex=0.5)
-points(timesSim,TrFun(5000*exp(-quantile(parSM$mu,0.05)*timesSim)), type="l",col = rgb(0,0,1,0.6), lty=2, pch=3, cex=0.5)
-points(timesSim,TrFun(5000*exp(-quantile(parSM$mu,0.95)*timesSim)), type="l",col = rgb(0,0,1,0.6), lty=2, pch=3, cex=0.5)
+points(timesSim,TrFun(5000*exp(-mean(parDSM$mu)*timesSim)), type="l",col = rgb(1,0,0,1), pch=3, cex=0.5)
+points(timesSim,TrFun(5000*exp(-quantile(parDSM$mu,0.5)*timesSim)), type="l",col = rgb(0,0,1,0.6), pch=3, cex=0.5)
+points(timesSim,TrFun(5000*exp(-quantile(parDSM$mu,0.05)*timesSim)), type="l",col = rgb(0,0,1,0.6), lty=2, pch=3, cex=0.5)
+points(timesSim,TrFun(5000*exp(-quantile(parDSM$mu,0.95)*timesSim)), type="l",col = rgb(0,0,1,0.6), lty=2, pch=3, cex=0.5)
 
 arrows(x0=15, y0=TrFun(500), x1=8.6, y1=TrFun(1.5), col='black', length=0.1, lwd=1)
 text(x = 15.5, y = TrFun(500), str_wrap("Expecting less than 1 sterile male by Day 8", width = 25), adj=c(0,0))
