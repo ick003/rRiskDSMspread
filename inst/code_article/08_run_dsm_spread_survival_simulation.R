@@ -62,7 +62,7 @@ for(rel in 1:1){
 
 set.seed(1)
 
-nSim = nrow(parDSM)/100
+nSim = nrow(parDSM)/10
 
 paramL = releaseSiteL = releaseSizeL = list()
 for(j in 1:nSim){
@@ -83,57 +83,58 @@ timesSim = seq(0,lastDaySim,1)
 # IV - Run Ag(DSM) pde simulation
 
 # It will take some time, especially for a large number of simulations. You can load the saved data instead.
-sim_mrr <- manyReleaseMozzies(manyParams=paramL, mc.cores = 7,
+sim_mrr_full <- manyReleaseMozzies(manyParams=paramL, mc.cores = 7,
                               manyReleaseSites = releaseSiteL,
                               manyReleaseSizes = releaseSizeL,
                               grid=grid2D, covariates=prep.covars, times=timesSim)
 # To save space we only keep the slices of time we want to plot
-
+sim_mrr <- sim_mrr_full
 timesPlot = c(2,5,9,12)
 sim_mrr$mods <- sim_mrr$mods[timesPlot,,]
 
 # V - Plots
 
 # Plot survival
-
+png(filename = "inst/manuscript/Draft/figure/Figure4.png", width = 20, height = 15, res = 600, units = "cm")
+timeSurv = seq(0,30,1)
 par(mfrow=c(1,1), mar = c(4,4,1,1))
 par(mar = c(4.5,4.5,1,1))
 layout(matrix(c(1,2), 2, 1, byrow = TRUE),
        widths=c(1), heights=c(3,1))
 TrFun = function(x){log(x)}
-plot(timesSim,TrFun(5000*exp(-mean(parDSM$mu[1:nSim])*timesSim)), type="l", xlab = "Days since release", ylab=expression(paste("Expected # sterile males (",lambda, ")")), 
+plot(timeSurv,TrFun(5000*exp(-mean(parDSM$mu[1:nSim])*timeSurv)), type="l", xlab = "Days since release", ylab=expression(paste("Expected # sterile males (",lambda, ")")), 
      bty='n', axes=F, col = rgb(1,0,0,0.5), pch=3, cex=0.5, ylim = TrFun(c(1e-1, 6000)))
 
 axis(1, at = seq(0,30,length.out = 11));
 axis(2, at = TrFun(c(1 %o% 10^(-1:3))), labels = c(1 %o% 10^(-1:3)), las=1, cex.axis=0.75)
 for(i in 1:nSim){
-    points(timesSim,TrFun(5000*exp(-parDSM$mu[i]*timesSim)), type="l", col=rgb(0,0,0,0.05), pch=3, cex=0.2)
+    points(timeSurv,TrFun(5000*exp(-parDSM$mu[i]*timeSurv)), type="l", col=rgb(0,0,0,0.05), pch=3, cex=0.2)
     #  points(attr(simM$mods,"times"),rowSums(simM$mods[, -1,i]), col = rgb(0,0,0,0.1), pch=3, cex=0.5)
 }
-points(timesSim,TrFun(5000*exp(-mean(parDSM$mu)*timesSim)), type="l",col = rgb(1,0,0,1), pch=3, cex=0.5)
-points(timesSim,TrFun(5000*exp(-quantile(parDSM$mu,0.5)*timesSim)), type="l",col = rgb(0,0,1,0.6), pch=3, cex=0.5)
-points(timesSim,TrFun(5000*exp(-quantile(parDSM$mu,0.05)*timesSim)), type="l",col = rgb(0,0,1,0.6), lty=2, pch=3, cex=0.5)
-points(timesSim,TrFun(5000*exp(-quantile(parDSM$mu,0.95)*timesSim)), type="l",col = rgb(0,0,1,0.6), lty=2, pch=3, cex=0.5)
+points(timeSurv,TrFun(5000*exp(-mean(parDSM$mu)*timeSurv)), type="l",col = rgb(1,0,0,1), pch=3, cex=0.5)
+points(timeSurv,TrFun(5000*exp(-quantile(parDSM$mu,0.5)*timeSurv)), type="l",col = rgb(0,0,1,0.6), pch=3, cex=0.5)
+points(timeSurv,TrFun(5000*exp(-quantile(parDSM$mu,0.05)*timeSurv)), type="l",col = rgb(0,0,1,0.6), lty=2, pch=3, cex=0.5)
+points(timeSurv,TrFun(5000*exp(-quantile(parDSM$mu,0.95)*timeSurv)), type="l",col = rgb(0,0,1,0.6), lty=2, pch=3, cex=0.5)
 
 arrows(x0=15, y0=TrFun(500), x1=8.6, y1=TrFun(1.5), col='black', length=0.1, lwd=1)
-text(x = 15.5, y = TrFun(500), str_wrap("Expecting less than 1 sterile male by Day 8", width = 25), adj=c(0,0))
-points(x = 8.1, y = TrFun(1), col = "red", cex=0.5)
+text(x = 15.5, y = TrFun(500), stringr::str_wrap("Expecting less than 1 sterile male by Day 8", width = 25), adj=c(0,0))
+points(x = 8.3, y = TrFun(1), col = "red", cex=0.5)
 
 arrows(x0=19, y0=TrFun(50), x1=10.9, y1=TrFun(0.15), col='black', length=0.1, lwd=1)
-text(x = 19.5, y = TrFun(50), str_wrap("Expected 90% probability of no sterile male by Day 10", width = 27), adj=c(0,0))
-points(x = 10.3, y = TrFun(0.1), col = "red", cex=0.5)
+text(x = 19.5, y = TrFun(50), stringr::str_wrap("Expected 90% probability of no sterile male by Day 10", width = 27), adj=c(0,0))
+points(x = 10.6, y = TrFun(0.1), col = "red", cex=0.5)
 
 par(mar = c(1.5,0,0,0))
 plot(c(0,0), xlim = c(1,10), ylim=c(8,10),type="n", bty='n', axes=F, xlab="", ylab="")
 legend("center", lty=c(1,1,2,1),
        col=c(rgb(1,0,0,0.6), rgb(0,0,1,0.6), rgb(0,0,1,0.6), rgb(0,0,0,0.1)), 
        legend = c("Mean", "Median", "5th and 95th percentiles", "Simulation"), ncol=2)
-
+dev.off()
 # Plot dispersal
 
-#png(filename = "inst/manuscript/Draft/figure/Figure5bis.png", width = 2400, height = 2400, res = 360)
+png(filename = "inst/manuscript/Draft/figure/Figure5bis.png", res = 600, units = "cm", width = 20, height = 20)
 set.seed(3)
-par(mfrow=c(2,2), mar = c(0.2,0.2,0.2,0.2))
+par(mfrow=c(2,2), mar = c(0.1,0.1,0.1,0.1))
 rangeX = range(MRR_swarm$X_m)+50*c(-1,1)
 rangeY = range(MRR_swarm$Y_m)+50*c(-1,1)
 for(j in  1:length(timesPlot)){
@@ -151,4 +152,5 @@ for(j in  1:length(timesPlot)){
     text(max(rangeX) - 25, min(rangeY)+50, "50m", adj=c(0.5, 1.5), cex = 0.75)
     text(mean(rangeX), max(rangeY), paste("Day", timesPlot[j]),adj=c(0.5, 1.5), cex = 0.75 )
 }
-#dev.off()
+dev.off()
+

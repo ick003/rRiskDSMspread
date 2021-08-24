@@ -68,7 +68,7 @@ mcmc_mat = as.matrix(mcmcobj)
 
 
 
-nSim = 10
+nSim = 100
 
 paramL = releaseSiteL = releaseSizeL = list()
 for(j in 1:nSim){
@@ -94,7 +94,11 @@ simMRR5 <- manyReleaseMozzies(manyParams=paramL, mc.cores = 6,
                               manyReleaseSizes = releaseSizeL,
                               grid=grid2D, covariates=prep.covars, times=timesSim)
 
+
+
 # V - Match simulation outputs and observations from MRR 5
+
+library(plyr)
 
 CP_Coord_UTM = LongLatToUTM(MRR$Long_CP, MRR$Lat_CP, 30)
 
@@ -107,37 +111,64 @@ IDs5 <- as.numeric( class::knn1( expand.grid( grid2D$x.mid, grid2D$y.mid), locat
 MRR$Loc_IDs = IDs5
 
 dfObs = ddply(MRR, .(relSite,Col_Meth, DayDiff, Loc_IDs),  summarize, N_mos = sum(N_mos))
-dfObs <- MRR %>% group_by(relSite, Col_Meth, DayDiff, Loc_IDs) %>% summarise(N_mos = sum(N_mos)) %>% ungroup()
-idxSwarm = which(MRR$Col_Meth %in% "Swarm")
-IdsSwarm5 = unique(dfObs$Loc_IDs[intersect(idxSwarm, which(dfObs$Col_Meth %in% "Swarm" & dfObs$N_mos > 0))])
+#dfObs <- MRR %>% group_by(relSite, Col_Meth, DayDiff, Loc_IDs) %>% summarise(N_mos = sum(N_mos)) %>% ungroup()
+catchType = c("PSC","Swarm")
+idxCatch = which(MRR$Col_Meth %in% catchType)
+IdsCatch5 = unique(dfObs$Loc_IDs[intersect(idxCatch, which(dfObs$Col_Meth %in% catchType & dfObs$N_mos > 0))])
 
 
 simMRR5_CV = simMRR5
-simMRR5_CV$mods = simMRR5$mods[,IdsSwarm5,]
+simMRR5_CV$mods = simMRR5$mods[,IdsCatch5,]
 attr(simMRR5_CV$mods,"times") <- timesSim
 
 # VI - Plot comparison
 
-par(mfrow = c(5,3), mar = c(2,2,1,1))
+png("./inst/manuscript/Draft/Figure3.png", units="in", width=10, height=10, res=600)
+par(mfrow = c(5,3), mar = c(2,4,1,1))
 prob_catch_swarm = mean((mcmc_mat[,7]) / (1 + (mcmc_mat[,7]) ))
-for(i in 1:14){
+SSE = nse = nci = 0
+for(i in 1:length(IdsCatch5)){
+    CV_OBS = dfObs[dfObs$Loc_IDs == IdsCatch5[i],]
+    SSE = SSE + sum((rowMeans(simMRR5_CV$mods[,i,]*prob_catch_swarm)[timesSim %in% CV_OBS$DayDiff] - CV_OBS$N_mos)^2)
+    nse = nse + nrow(CV_OBS)
+    cil = qpois(0.05, rowMeans(simMRR5_CV$mods[,i,]*prob_catch_swarm))[timesSim %in% CV_OBS$DayDiff]
+    ciu = qpois(0.95, rowMeans(simMRR5_CV$mods[,i,]*prob_catch_swarm))[timesSim %in% CV_OBS$DayDiff]
+    nci = nci + sum(sapply(1:nrow(CV_OBS), function(x) between(CV_OBS$N_mos[x], cil[x], ciu[x])), na.rm=TRUE)
+        
+    if(max(CV_OBS$N_mos)==0) next
     plot(timesSim,simMRR5_CV$mods[,i,1]*prob_catch_swarm, type = "l", 
-         ylim = range(simMRR5_CV$mods[,i,]*prob_catch_swarm) + c(0,1), 
-         col = alpha(rgb(0,0,0), 0.1))
+         #ylim = range(simMRR5_CV$mods[,i,]*prob_catch_swarm) + c(0,1), 
+         ylim = c(0,6),
+         col = alpha(rgb(1,0.6,0), 0.1), bty = "n", 
+         xlab = "", ylab = expression(lambda))
     polygon(x = c(timesSim, rev(timesSim)), 
             y = c(qpois(0.05, rowMeans(simMRR5_CV$mods[,i,]*prob_catch_swarm)), 
                   rev(qpois(0.95, rowMeans(simMRR5_CV$mods[,i,]*prob_catch_swarm)))), 
-            border = NA, col = alpha(rgb(1,0.6,0),0.35))
-    for(j in 2:dim(simMRR5_CV$mods)[3]){
-        points(timesSim, simMRR5_CV$mods[,i,j]*prob_catch_swarm, type=  "l", col = alpha(rgb(0,0,0), 0.1))
-    }
-    points(timesSim, rowMeans(simMRR5_CV$mods[,i,]*prob_catch_swarm), type = "l", lwd = 2)
+            border = NA, col = alpha(rgb(1,0.6,0),0.15))
+    #for(j in 2:dim(simMRR5_CV$mods)[3]){
+    #    points(timesSim, simMRR5_CV$mods[,i,j]*prob_catch_swarm, type=  "l", col = alpha(rgb(0,0,0), 0.1))
+    #}
+    points(timesSim, rowMeans(simMRR5_CV$mods[,i,]*prob_catch_swarm), type = "l", lwd = 2, 
+           col = alpha(rgb(1,0.6,0), 0.75))
     
-    CV_OBS = dfObs[dfObs$Loc_IDs == IdsSwarm5[i],]
-    points(CV_OBS$DayDiff+0.125, CV_OBS$N_mos, col = "red")
+    
+    points(CV_OBS$DayDiff+0.125, CV_OBS$N_mos, col = "red", pch = 3, cex = 0.5)
+    text(x = 4, y = 6,label = paste("Loc:",IdsCatch5[i]))
+    
+    
 }
+
+plot.new()
+legend("center", c("Expected # mosquitoes", 
+                   "90% credible interval", 
+                   "Observation"), 
+       lty = c(1, 1, NA), cex = 1.25, col = c(alpha(rgb(1,0.6,0), 0.75), alpha(rgb(1,0.6,0), 0.15), "red"), 
+       lwd = c(2, 8, NA), pch = c(NA, NA, 3), box.lwd = 0.1)
+dev.off()
+
+par(mfrow=c(1,1))
 plot(MRR_compounds$X_m[MRR_compounds$Locality == "Village"], MRR_compounds$Y_m[MRR_compounds$Locality == "Village"])
 points(LocMRR$X, LocMRR$Y, col = "blue")
-points(expand.grid( grid2D$x.mid, grid2D$y.mid)[IdsSwarm5,], col = "red", cex=0.1)
+points(expand.grid( grid2D$x.mid, grid2D$y.mid)[IdsSwarm5,], col = "red", cex=0.5)
 text(expand.grid( grid2D$x.mid, grid2D$y.mid)[IdsSwarm5,], labels = 1:14, col = "red")
 

@@ -1,4 +1,7 @@
 %% BioMed_Central_Tex_Template_v1.06
+%DIF LATEXDIFF DIFFERENCE FILE
+
+
 %%                                      %
 %  bmc_article.tex            ver: 1.06 %
 %                                       %
@@ -105,6 +108,70 @@
 \endlocaldefs
 
 %%% Begin ...
+%DIF PREAMBLE EXTENSION ADDED BY LATEXDIFF
+%DIF UNDERLINE PREAMBLE %DIF PREAMBLE
+\RequirePackage[normalem]{ulem} %DIF PREAMBLE
+\RequirePackage{color}\definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1} %DIF PREAMBLE
+\providecommand{\DIFaddtex}[1]{{\protect\color{blue}\uwave{#1}}} %DIF PREAMBLE
+\providecommand{\DIFdeltex}[1]{{\protect\color{red}\sout{#1}}}                      %DIF PREAMBLE
+%DIF SAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddbegin}{} %DIF PREAMBLE
+\providecommand{\DIFaddend}{} %DIF PREAMBLE
+\providecommand{\DIFdelbegin}{} %DIF PREAMBLE
+\providecommand{\DIFdelend}{} %DIF PREAMBLE
+%DIF FLOATSAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddFL}[1]{\DIFadd{#1}} %DIF PREAMBLE
+\providecommand{\DIFdelFL}[1]{\DIFdel{#1}} %DIF PREAMBLE
+\providecommand{\DIFaddbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFaddendFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelendFL}{} %DIF PREAMBLE
+%DIF HYPERREF PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFadd}[1]{\texorpdfstring{\DIFaddtex{#1}}{#1}} %DIF PREAMBLE
+\providecommand{\DIFdel}[1]{\texorpdfstring{\DIFdeltex{#1}}{}} %DIF PREAMBLE
+\newcommand{\DIFscaledelfig}{0.5}
+%DIF HIGHLIGHTGRAPHICS PREAMBLE %DIF PREAMBLE
+\RequirePackage{settobox} %DIF PREAMBLE
+\RequirePackage{letltxmacro} %DIF PREAMBLE
+\newsavebox{\DIFdelgraphicsbox} %DIF PREAMBLE
+\newlength{\DIFdelgraphicswidth} %DIF PREAMBLE
+\newlength{\DIFdelgraphicsheight} %DIF PREAMBLE
+% store original definition of \includegraphics %DIF PREAMBLE
+\LetLtxMacro{\DIFOincludegraphics}{\includegraphics} %DIF PREAMBLE
+\newcommand{\DIFaddincludegraphics}[2][]{{\color{blue}\fbox{\DIFOincludegraphics[#1]{#2}}}} %DIF PREAMBLE
+\newcommand{\DIFdelincludegraphics}[2][]{% %DIF PREAMBLE
+\sbox{\DIFdelgraphicsbox}{\DIFOincludegraphics[#1]{#2}}% %DIF PREAMBLE
+\settoboxwidth{\DIFdelgraphicswidth}{\DIFdelgraphicsbox} %DIF PREAMBLE
+\settoboxtotalheight{\DIFdelgraphicsheight}{\DIFdelgraphicsbox} %DIF PREAMBLE
+\scalebox{\DIFscaledelfig}{% %DIF PREAMBLE
+\parbox[b]{\DIFdelgraphicswidth}{\usebox{\DIFdelgraphicsbox}\\[-\baselineskip] \rule{\DIFdelgraphicswidth}{0em}}\llap{\resizebox{\DIFdelgraphicswidth}{\DIFdelgraphicsheight}{% %DIF PREAMBLE
+\setlength{\unitlength}{\DIFdelgraphicswidth}% %DIF PREAMBLE
+\begin{picture}(1,1)% %DIF PREAMBLE
+\thicklines\linethickness{2pt} %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,0){\framebox(1,1){}}}% %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,0){\line( 1,1){1}}}% %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,1){\line(1,-1){1}}}% %DIF PREAMBLE
+\end{picture}% %DIF PREAMBLE
+}\hspace*{3pt}}} %DIF PREAMBLE
+} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddbegin}{\DIFaddbegin} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddend}{\DIFaddend} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelbegin}{\DIFdelbegin} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelend}{\DIFdelend} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddbegin}{\DIFOaddbegin \let\includegraphics\DIFaddincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddend}{\DIFOaddend \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelbegin}{\DIFOdelbegin \let\includegraphics\DIFdelincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelend}{\DIFOaddend \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddbeginFL}{\DIFaddbeginFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddendFL}{\DIFaddendFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelbeginFL}{\DIFdelbeginFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelendFL}{\DIFdelendFL} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddbeginFL}{\DIFOaddbeginFL \let\includegraphics\DIFaddincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddendFL}{\DIFOaddendFL \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelbeginFL}{\DIFOdelbeginFL \let\includegraphics\DIFdelincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelendFL}{\DIFOaddendFL \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+%DIF END PREAMBLE EXTENSION ADDED BY LATEXDIFF
+
 \begin{document}
 
 %%% Start of article front matter
@@ -260,15 +327,15 @@
 %%%%%%%%%%%%%%%%
 %% Background %%
 %%
-\section*{Background}
+\section{Background}
 %\paragraph{Context}
 Over the last thirty years conventional control strategies have reduced the global incidence rate of malaria. The efficacy of these strategies, however, appears to be waning. Global malaria incidence rates have barely changed since 2014, stalling around 57 cases per 1000 population at risk despite increased expenditure on elimination and prevention between from 2014 to 2017 \citep{WHO2019}. Consequently, the World Health Organisation predicts that morbidity targets for 2020, 2025 and 2030 will not to be met without significant improvements in vector control and chemoprevention.
 
-Laboratory studies and modelling indicate that novel control strategies that use gene drives to force engineered alleles through vector populations to suppress them, or render them unable to transmit plasmodium parasites, could augment conventional strategies and significantly improve current rates of malaria control \citep{Gabrieli2014,Beaghton2017, CarballarLejarazu2020,Simoni2020}. As with many novel technologies, however, the safety of genetic control methods is uncertain, and the potential for spread and ecosystem-wide impacts makes gene-drives contentious \citep{Ledord2015,Champer2016}.
+Laboratory studies and modelling indicate that novel control strategies that use gene drives to force \DIFdelbegin \DIFdel{effector genes }\DIFdelend \DIFaddbegin \DIFadd{engineered alleles }\DIFaddend through vector populations to suppress them, or render them unable to transmit plasmodium parasites, could augment conventional strategies and significantly improve current rates of malaria control \citep{Gabrieli2014,Beaghton2017, CarballarLejarazu2020,Simoni2020}. As with many novel technologies, however, the safety of genetic control methods is uncertain, and the potential for spread and ecosystem-wide impacts makes gene-drives contentious \citep{Ledord2015,Champer2016}.
 
 To date, all research on gene-drive modified mosquitoes (GDMMs) has been conducted in laboratories under strict physical, ecological, reproductive and/or molecular containment \citep{Akbari2015}. Current guidance recommends that if containment is to be relaxed it should be done in a ``phased-release'' strategy wherein data is gathered, risks are evaluated, and containment is gradually lifted in a step-wise fashion if and when the risks are deemed acceptable \citep{WHOTDRFNIH2014,NASEM2016}. The possibility of long-distance dispersal \citep{Huestis2019} and biosecurity concerns with large semi-field enclosure, however, may erode confidence in strategies that try to gradually lift ecological or physical containment. 
 
-Genetic and reproductive containment strategies may be more amenable to a gradual-release strategy, and several approaches are currently being pursued \citep{Klein2012,Galizi2014,Nash2019}. In this paper we focus on the spatio-temporal dynamics that govern the spread and persistence of a single cohort of genetically modified, Dominant Sterile Male (DSM) \textit{Anopheles coluzzii} mosquitoes released in a small village in Burkina Faso. These sterile male mosquitoes are reproductively contained (but females that carry the sterilising construct are fertile) and could represent the first stage in a three-stage pathway to malaria vector control using a gene drive that results in a male-biased sex ratio \citep{Beaghton2017a,North2019}.
+Genetic and reproductive containment strategies \DIFdelbegin \DIFdel{on the other hand }\DIFdelend may be more amenable to a gradual-release strategy, and several approaches are currently being pursued \citep{Klein2012,Galizi2014,Nash2019}. In this paper we focus on the spatio-temporal dynamics that govern the spread and persistence of a single cohort of genetically modified, Dominant Sterile Male (DSM) \textit{Anopheles coluzzii} mosquitoes released in a small village in Burkina Faso. These \DIFaddbegin \DIFadd{sterile male }\DIFaddend mosquitoes are reproductively contained \DIFdelbegin \DIFdel{, and }\DIFdelend \DIFaddbegin \DIFadd{(but females that carry the sterilising construct are fertile) and could }\DIFaddend represent the first stage in a three-stage pathway to malaria vector control using a gene drive that results in a male-biased sex ratio \citep{Beaghton2017a,North2019}.
 
 %Pest insects represent a major threat to public health, to food security as well as to the economics. Constant effort is being made to develop or improve control strategies for the management of pest insects. Such management aims to maintain insects at low levels that do not represent risks for health or economics, while satisfying environmentally respectful toxicological and ecological requirements. Planning of efficient control strategies requires in-depth knowledge of the insect’s biology and ecology \cite{Way2000}. In particular, it is essential to have accurate estimates of parameters of biological and ecological relevance like population size and distribution, dispersal capacity, as well as good understanding of the underlying processes governing the dynamics of the population in time and space.
 
@@ -284,13 +351,14 @@ Genetic and reproductive containment strategies may be more amenable to a gradua
 %\paragraph{We use data from mark recapture release and elicitation to run an inference for WT mosquitoes model parameters}
 In our analysis the spatio-temporal dynamics of DSM mosquitoes are driven by: (i) a diffusion process that accounts for the dispersal capacity of the insects; (ii) an advection process that accounts for the attraction of individuals to swarms, and (iii) a reaction process that accounts for the death of sterile male mosquitoes. These processes can be described mathematically by a partial differential equation (PDE) of the advection-diffusion-reaction type, which models how the distribution of mosquitoes in time and space is affected by a chemo-attractant present in the environment. Models of this type have also been widely used within the environmental and ecological literature. In particular, such models have been used before to model mosquitoes, for example the dispersal of \emph{Aedes albopictus} in Reunion Island using a similar type of parabolic PDE \citep{Dufourd2012}.
 
-Our objective is to predict the spread and persistence of the genetically modified mosquitoes ahead of a proposed field release. These predictions are an important component of an independent risk assessment conducted prior to the field release \cite{Hayes2015a} that assessed the risk of vector-borne disease transmission \cite{Hosack2020}, and could also help to inform the design of a post-release monitoring strategy. Our approach implements the Bayesian paradigm; we elicit the prior distribution of model parameters from relevant experts, for both the wild type mosquito (WT) and its DSM counterpart. We obtain the posterior model parameter values for the 
+Our objective is to predict the spread and persistence of the genetically modified mosquitoes ahead of a proposed field release. These predictions are an important component of an independent risk assessment conducted prior to the field release \cite{Hayes2015a} that assessed the risk of \DIFdelbegin \DIFdel{vecotr-borne }\DIFdelend \DIFaddbegin \DIFadd{vector-borne }\DIFaddend disease transmission \cite{Hosack2020}, and could also help to inform the design of a post-release monitoring strategy. Our approach implements the Bayesian paradigm; we elicit the prior distribution of model parameters from relevant experts, for both the wild type mosquito (WT) and its DSM counterpart. We obtain the posterior model parameter values for the 
+\DIFaddbegin 
 
-WT parameters using the results of mark-release-recapture (MRR) experiments conducted by \cite{Epopa2017}. We then use Bayesian model averaging to predict the spread and persistence of DSM mosquitoes. 
+\DIFaddend WT parameters using the results of mark-release-recapture (MRR) experiments conducted by \cite{Epopa2017}. We then use Bayesian model averaging to predict the spread and persistence of DSM mosquitoes. 
 
-\section*{Methods}
+\section{Methods}
 
-\subsection*{PDE model}
+\subsection{PDE model}
 
 %\paragraph{Description of the model type/form}
 The literature review conducted by \cite{Cummins2012} suggests that the behaviour of host-seeking mosquitoes can be categorised as: (i) \emph{plume finding} in which flight direction is either random (kinesis), determined by visual features in the absence of wind or deliberately upwind, downwind or crosswind (anemotaxis) when wind is present; and, (ii) \emph{plume tracking}, where once the mosquito detects an odour plume, flight direction is deliberately upwind, or possibly determined by the odour gradient in windless conditions, in order to find the odour source (positive chemotaxis). More details on the properties of these search strategies can be found in \cite{Pasternak2009}. 
@@ -315,27 +383,27 @@ where $\mathcal{L}$ are the known swarm locations (identified prior to the MRR e
 
 The theoretical solution to the partial differential equation~\ref{mod3} is the expected number of male mosquitoes at time $t$ and location $\vs=(\mathrm{easting},\mathrm{northing})$. The partial derivatives are denoted $\lambda_{\vt}$ (with respect to time) and $\lambda_{\vs \vs}$ (with respect to location). Because we use a numerical solver, we define a grid over the spatial domain. Each grid cell is therefore one areal unit. In this study, an areal unit is a square of 100 m$^2$ of area. All process model parameters are summarised in Table \ref{tble:parameters}.
 
-%\begin{table}[ht]
-%\centering
-%\begingroup
-%
-%\begin{tabular}{cp{60mm}c}
-%\hline
-%Name & Description & Units \\
-%\hline
-%$\va$ & Attractiveness of swarms & reward$^-1$.$m^-1$\\
-%%$\vb$ & Decay of attractiveness & \colorbox{orange!30}{??} \\
-%$\vm$ & Male mosquito mortality rate &  day$^{-1}$\\ 
-%$\lambda$ & The expected number of male mosquitoes & Number of mosquitoes per areal unit \\ 
-%$\vd$ & Isotropic diffusion coefficient & $m^2$.day$^-1$\\ 
-%$\sigma$ & Decay of attraction to swarm sites  & $m$\\
-%\hline
-%\end{tabular}
-%\endgroup
-%\caption{\label{tble:parameters} The parameters and units of the diffusion-advection-reaction model for sterile male mosquitoes.} 
-%\end{table}
+\begin{table}[ht]
+\centering
+\begingroup
 
-\subsection*{Data}
+\begin{tabular}{cp{60mm}c}
+\hline
+Name & Description & Units \\
+\hline
+$\va$ & Attractiveness of swarms & reward$^-1$.$m^-1$\\
+%$\vb$ & Decay of attractiveness & \colorbox{orange!30}{??} \\
+$\vm$ & Male mosquito mortality rate &  day$^{-1}$\\ 
+$\lambda$ & The expected number of male mosquitoes & Number of mosquitoes per areal unit \\ 
+$\vd$ & Isotropic diffusion coefficient & $m^2$.day$^-1$\\ 
+$\sigma$ & Decay of attraction to swarm sites  & $m$\\
+\hline
+\end{tabular}
+\endgroup
+\caption{\label{tble:parameters} The parameters and units of the diffusion-advection-reaction model for sterile male mosquitoes.} 
+\end{table}
+
+\subsection{Data}
 %\paragraph{MRR data - what parameters is the data talking to}
 In this analysis we use the results of five MRR experiments \cite{Epopa2017} wherein approximately 5000 adult male WT mosquitoes, marked with a colored powder, were released two hours before swarming (around 4pm), at three different locations, on five different dates (Table~\ref{tab:relLoc}). Mosquitoes were recaptured in three ways via: (i) swarm sampling in the evening (times were not specified, but we assume the sampling occurred between 7pm and 9pm); (ii) Pyrethroid Spray Catches in the morning inside houses; and, (iii) placement of humidified clay pots within rooms within houses, that were subsequently checked in the morning (between 6am-7am). All releases and re-captures sites were geo-located allowing for a spatial model to be used.
 
@@ -343,39 +411,39 @@ Recaptures were performed for seven days after release for all experiments excep
 
 % latex table generated in R 3.4.1 by xtable 1.8-2 package
 % Fri Oct 13 08:25:21 2017
-%\begin{table}[ht]
-%\centering
-%\begingroup\small
-%\begin{tabular}{|cccccccc|}
-%\hline
-%MRR & Date & Release site & Longitude & Latitude & N released & N captured & Distance\\ 
-%\hline
-%1 & 2013-10-09 & A & -4.4724 & 11.2347 & 1146 & 32 & 140\\ 
-%1 & - & B & -4.4755 & 11.2342 & 1158 & 9 & 344\\ 
-%1 & - & C & -4.4718 & 11.2318 & 1103 & 6 & 205\\ 
-%2 & 2014-05-07 & A & -4.4724 & 11.2347 & 1878 & 6 & 94\\ 
-%2 & - & B & -4.4755 & 11.2342 & 1655 & 1 & 266\\ 
-%2 & - & C & -4.4718 & 11.2318 & 1734 & 1 & 193\\ 
-%3 & 2014-09-04 & A & -4.4724 & 11.2347 & 1665 & 56 & 133\\ 
-%3 & - & B & -4.4755 & 11.2342 & 1673 & 4 & 440\\ 
-%3 & - & C & -4.4718 & 11.2318 & 1684 & 13 & 205\\ 
-%4 & 2015-04-09 & A & -4.4724 & 11.2347 & 2107 & 1 & 55\\ 
-%4 & - & B & -4.4755 & 11.2342 & 2013 & 3 & 386\\ 
-%4 & - & C & -4.4718 & 11.2318 & 1953 & 18 & 190\\ 
-%5 & 2015-10-09 & C & -4.4724 & 11.2347 & 5992 & 18 & 141\\ 
-%\hline
-%\end{tabular}
-%\endgroup
-%\caption{Summary of the MRR experiments conducted by \cite{Epopa2017} in Burkina Faso. The last column presents the average distance for recapture (in meters). We use the results of the first four experiments to parameterise our model and calculate Bayes factor for expert-derived priors, and use the fifth MRR experiment is to validate the model predictions.} 
-%\label{tab:relLoc}
-%\end{table}
+\begin{table}[ht]
+\centering
+\begingroup\small
+\begin{tabular}{|cccccccc|}
+\hline
+MRR & Date & Release site & Longitude & Latitude & N released & N captured & Distance\\ 
+\hline
+1 & 2013-10-09 & A & -4.4724 & 11.2347 & 1146 & 32 & 140\\ 
+1 & - & B & -4.4755 & 11.2342 & 1158 & 9 & 344\\ 
+1 & - & C & -4.4718 & 11.2318 & 1103 & 6 & 205\\ 
+2 & 2014-05-07 & A & -4.4724 & 11.2347 & 1878 & 6 & 94\\ 
+2 & - & B & -4.4755 & 11.2342 & 1655 & 1 & 266\\ 
+2 & - & C & -4.4718 & 11.2318 & 1734 & 1 & 193\\ 
+3 & 2014-09-04 & A & -4.4724 & 11.2347 & 1665 & 56 & 133\\ 
+3 & - & B & -4.4755 & 11.2342 & 1673 & 4 & 440\\ 
+3 & - & C & -4.4718 & 11.2318 & 1684 & 13 & 205\\ 
+4 & 2015-04-09 & A & -4.4724 & 11.2347 & 2107 & 1 & 55\\ 
+4 & - & B & -4.4755 & 11.2342 & 2013 & 3 & 386\\ 
+4 & - & C & -4.4718 & 11.2318 & 1953 & 18 & 190\\ 
+5 & 2015-10-09 & C & -4.4724 & 11.2347 & 5992 & 18 & 141\\ 
+\hline
+\end{tabular}
+\endgroup
+\caption{Summary of the MRR experiments conducted by \cite{Epopa2017} in Burkina Faso. The last column presents the average distance for recapture (in meters). We use the results of the first four experiments to parameterise our model and calculate Bayes factor for expert-derived priors, and use the fifth MRR experiment is to validate the model predictions.} 
+\label{tab:relLoc}
+\end{table}
 
-\subsection*{Priors}
-\subsubsection*{Process model}
+\subsection{Priors}
+\subsubsection{Process model}
 %\paragraph{Prior of parameters: elicitation data}
 A key challenge when conducting risk assessments of a novel technology is the lack of empirical information. Without any operational history from which success and failure rates might be estimated, quantitative risk predictions must (at least initially), be based on the testable predictions of domain experts. The Bayesian inference paradigm encourages the careful elicitation of prior information, and provides a coherent mechanism for updating this information as data becomes available \citep{Lindley2000}. The experimental observations and expert elicitation, however, must be independent but carefully aligned for this process to work.
 
-For this analysis we carefully elicited opinions on the mortality rate and dispersal distance of WT and DSM male mosquitoes from four independent recognised experts on malaria transmission by mosquitoes in Africa and genetic vector control methods; the independent experts were not involved in the development of the DSM mosquitoes \cite{Hayes2015a}. The experts were encouraged to draw on their own research experience and knowledge of the published literature while constructing their assessments.   Prior to the elicitation, experts were provided information on the genetic construct (originally incorporated into the G3 laboratory colony strain of \textit{An. gambiae}) and were told that the genetically modified strain would be repeatedly backcrossed with wild type mosquitoes captured in the vicinity of a biosecure laboratory in order to gradually replace the G3 genetic background with that of the locally originated strain. The location of the laboratory was provided to each expert but the species of local WT mosquitoes was not specified. For the mortality rate, experts were proposed to answer questions about either the probability of mortality, the probability of survival, or the life expectancy. All responses were converted to an estimate of the daily probability of survival ($p$) which was then converted to the mortality rate parameter ($\mu = -\log(p)$) used in the PDE model.
+For this analysis we carefully elicited opinions on the mortality rate and dispersal distance of WT and DSM male mosquitoes from four independent \DIFdelbegin \DIFdel{experts who }\DIFdelend \DIFaddbegin \DIFadd{recognised experts on malaria transmission by mosquitoes in Africa and genetic vector control methods; the independent experts }\DIFaddend were not involved in the development of the DSM mosquitoes \cite{Hayes2015a}. \DIFaddbegin \DIFadd{The experts were encouraged to draw on their own research experience and knowledge of the published literature while constructing their assessments.   }\DIFaddend Prior to the elicitation, experts were provided information on the genetic construct (originally incorporated into the G3 laboratory colony strain of \textit{An. gambiae}) and were told that the genetically modified strain would be repeatedly backcrossed with wild type mosquitoes captured in the vicinity of a biosecure laboratory in order to gradually replace the G3 genetic background with that of the locally originated strain. The location of the laboratory was provided to each expert but the species of local WT mosquitoes was not specified. For the mortality rate, experts were proposed to answer questions about either the probability of mortality, the probability of survival, or the life expectancy. All responses were converted to an estimate of the daily probability of survival ($p$) which was then converted to the mortality rate parameter ($\mu = -\log(p)$) used in the PDE model.
 
 The model's diffusion parameter ($\vd$) was not elicited directly but calculated using the experts' prior opinion on the average daily dispersal distance ($d$) of male mosquitoes. All experts agreed that a log-normal distribution provided the most appropriate description of their uncertainty for both WT and DSM strains. The model's prior diffusion parameter was subsequently calculated using the relation $\vd = d^2/\pi t$ (see Appendix for a detailed derivation). The geographical and temporal context of the elicitation was carefully prescribed, including a standardized time frame (dispersal over a one day period), so that all experts' opinions could be combined.
 
@@ -383,7 +451,7 @@ The model's two chemotaxis-related parameters are: (i) the relative strength of 
 
 Finding prior information on these parameters proved difficult for the particular setting of this model, in particular for $\va$. We therefore chose a very broad prior distribution for $\va$ that spans several orders of magnitude, from $1\%$ (1st percentile) to $140\%$ (99th percentile) of the attraction at the source. For the range $\sigma$ defined the same way we do, different articles on related species provide values ranging from $3$m \cite{McIver1989}, to $18$m for single baiting or over $36$m for double baiting \cite{Gillies1972}, or even $40$m \cite{Zhu2015}. We therefore used a log-normal distribution for this prior with positive probability across all these possibilities (Table~\ref{tble:prior}). 
 
-\subsubsection*{Observation model}
+\subsubsection{Observation model}
 An important advantage of the Bayesian paradigm is that it allows us to develop more realistic hierarchical models that capture uncertainty in the biological and physical processes that drive a phenomenon, as well as the uncertainty associated with the measurement process with which these processes are observed. In this context, this allows us to reflect the uncertainty about how many mosquitoes any particular trap will catch given a known number of mosquitoes in the proximity of the trap.
 
 Here we represent the observation model uncertainty using three, trap-specific, catchability parameters, denoted $p_{cfr}$ for clay-pots, $p_{psc}$ for insecticide spraying and $p_{ss}$ for swarm sampling. These parameters define the probability of catching a mosquito given that it was in close proximity of the trap at the time of sampling \cite{Martin2005a}. Note that prior and posterior estimates of these parameters depend on the model resolution because the definition of ``close proximity'' is determined by the resolution of the raster (i.e. the grid cell size) over which the PDE model is numerically solved. Hence all predictions must be made at the same resolution used for solving the PDE and updating the prior distributions. 
@@ -396,27 +464,27 @@ The priors for the catchability parameters were chosen according to the followin
 \end{itemize} 
 A complete list of process and observation model priors and their sources is summarised in Table \ref{tble:prior}.
 
-%\begin{table}[h]
-%\centering
-%\begingroup\small
-%\begin{tabular}{|c|ccc|}
-%\hline
-%Parameter & Prior parameters & Prior distribution & Source \\\hline
-%Mortality ($\mu$) & $ \theta_\mu$: mixture (see Fig \ref{fig:prior_posterior}) & Beta & Experts\\
-%Diffusion ($D$) & $\theta_D$: mixture (see Fig \ref{fig:prior_posterior}) & Log-normal & Experts\\
-%Swarm attraction ($\alpha$) & $\theta_\alpha = \{ -2, 1 \}$ & Log-normal &  Weakly informative \\ 
-%Swarm range ($\sigma$) &  $\theta_\sigma = \{3.5, 4 \}$ & Log-normal &  Literature\\ 
-%Catchability cfr ($p_{cfr}$) & $\theta_{cfr} =\{1, 1\}$ & Beta & Weakly informative \\ 
-%Catchability psc ($p_{psc}$) & $\theta_{psc} =\{1.4, 1\}$ & Beta & SOP \\ 
-%Catchability ss ($p_{ss}$) & $\theta_{ss} =\{10, 20\}$ & Beta & SOP \\
-%\hline
-%\end{tabular}
-%\endgroup
-%\caption{\label{tble:prior} Process (PDE model) and observation model parameters, prior distributions and sources. SOP: Standard Operating Procedures: the procedure used during the MRR experiments are described in a set of SOP that were made available to us as part of an independent risk assessment process.}
-%\end{table}
+\begin{table}[h]
+\centering
+\begingroup\small
+\begin{tabular}{|c|ccc|}
+\hline
+Parameter & Prior parameters & Prior distribution & Source \\\hline
+Mortality ($\mu$) & $ \theta_\mu$: mixture (see Fig \ref{fig:prior_posterior}) & Beta & Experts\\
+Diffusion ($D$) & $\theta_D$: mixture (see Fig \ref{fig:prior_posterior}) & Log-normal & Experts\\
+Swarm attraction ($\alpha$) & $\theta_\alpha = \{ -2, 1 \}$ & Log-normal &  Weakly informative \\ 
+Swarm range ($\sigma$) &  $\theta_\sigma = \{3.5, 4 \}$ & Log-normal &  Literature\\ 
+Catchability cfr ($p_{cfr}$) & $\theta_{cfr} =\{1, 1\}$ & Beta & Weakly informative \\ 
+Catchability psc ($p_{psc}$) & $\theta_{psc} =\{1.4, 1\}$ & Beta & SOP \\ 
+Catchability ss ($p_{ss}$) & $\theta_{ss} =\{10, 20\}$ & Beta & SOP \\
+\hline
+\end{tabular}
+\endgroup
+\caption{\label{tble:prior} Process (PDE model) and observation model parameters, prior distributions and sources. SOP: Standard Operating Procedures: the procedure used during the MRR experiments are described in a set of SOP that were made available to us as part of an independent risk assessment process.}
+\end{table}
 
-\subsection*{Inference}
-\subsubsection*{WT male parameters}
+\subsection{Inference}
+\subsubsection{WT male parameters}
 A Bayesian Hierarchical Model (BHM) is classically written:
   \begin{eqnarray}
 {\bm \pi}(\theta, \lambda | {\sf y}) &\propto & \underbrace{{\bm \pi}({\sf y} | \lambda)}_{data} \underbrace{{\bm \pi}(\lambda | \theta)}_{process} \underbrace{{\bm \pi}( \theta)}_{prior} 
@@ -426,68 +494,69 @@ where here $\theta$ is the vector of parameters of the PDE model and the trap ca
 {\bm \pi}(\theta_d, {\lambda_r}, {p_c} | {\sf y}) &\propto & \prod_c \prod_r \Big[  \underbrace{{\bm \pi}({\sf y_{r,c}} | \lambda_r, p_c)}_{data} \underbrace{{\bm \pi}(\lambda_r | \theta_d)}_{process} \Big] \underbrace{{\bm \pi}( \theta_d, p_c)}_{prior} 
 \end{eqnarray}
 where $\theta_d$ is the list of parameters defined in Table \ref{tble:parameters}.
-%\begin{figure}
-%\centering{ \includegraphics[width=0.95\textwidth]{./Figure1.png}}
-%\caption{\label{fig:bhm_schematic} Hierarchical structure of the model for the WT males observations and its connection to the DSM mosquitoes spread and persistence prediction. The parameters $\alpha$ (chemotaxis attraction strength) and $\sigma$ (chemotaxis attraction range) are shared between the two strains.}
-%\begin{tikzpicture}[scale= 0.5]
-%
-%  % Define nodes
-%  \node[obs]                               (y) {${\sf y}^{WT}_{\sf r,c}$};
-%
-% % PDE model output
-%
-%	\node[latent, above=of y, yshift = 0.5cm, xshift = -1.25cm] (lambdaWT) {$\lambda^{WT}$};
-%	\node[latent, right=of lambdaWT,xshift = 4cm] (lambdaGE) {$\lambda^{DSM}$};
-%
-%% Observation model parameters
-%	\node[latent, above=of y, yshift = 0.0cm, xshift = 1.25cm] (pC) {$p_{c}$};
-%
-%% PDE model parameters
-%
-%	\node[latent, above=of lambdaWT, xshift = -0.5cm, yshift = 0.5cm] (muWT) {$\mu_{WT}$};
-%	\node[latent, above=of lambdaWT, yshift = 0.5cm, xshift = 0.5cm] (deltaWT) {$D_{WT}$};
-%
-%	\node[latent, above=of lambdaGE, yshift = 0.5cm, xshift = -0.75cm] (muGE) {$\mu_{DSM}$};
-%	\node[latent, above=of lambdaGE, yshift = 0.5cm, xshift = 0.75cm] (deltaGE) {$D_{DSM}$};
-%
-%	\node[latent, above=of lambdaWT, yshift = 0.5cm, xshift = 2cm] (alpha) {$\alpha$};
-%	\node[latent, above=of lambdaWT, yshift = 0.5cm, xshift = 3.5cm] (sigma) {$\sigma$};
-%  
-%  
-%% Expert elicited parameters
-%
-%  	\node[const, above=of muWT, yshift = 1.5cm] (thetaMu) {$\theta_{\mu_{WT}}^e$};
-%	\node[const, above=of deltaWT, yshift = 1.5cm] (thetaDelta) {$\theta_{D_{WT}}^e$};
-%	\node[const, above=of muGE, yshift = 1.2cm] (thetaMuG) {$\theta_{\mu_{DSM}}^e$};
-%	\node[const, above=of deltaGE, yshift = 1.2cm] (thetaDeltaG) {$\theta_{D_{DSM}}^e$};
-%
-%% Other priors
-%
-%	\node[const, right=of pC] (priorpC) {$\theta_{c}$};
-%	\node[const, above=of alpha] (priorAlpha) {$\theta_{\alpha}$};
-%	\node[const, above=of sigma] (priorSigma) {$\theta_{\sigma}$};
-%
-%% Factors
-%
-%\factor[above=of lambdaWT] {wWT} {left:$\mathcal{P}$} {muWT,deltaWT, alpha, sigma} {lambdaWT} ;
-%\factor[above=of lambdaGE] {wGE} {right:$\mathcal{P}$} {muGE,deltaGE, alpha, sigma} {lambdaGE} ;
-%
-%\factor[above=of y] {wY} {left:Binom} {lambdaWT,pC} {y} ;
-%\factor[above=of muWT] {wmuWT} {left:Beta} {thetaMu} {muWT} ;
-%\factor[above=of muGE] {wmuGE} {left:Beta} {thetaMuG} {muGE} ;
-%\factor[above=of deltaWT] {wdeltaWT} {right:LN} {thetaDelta} {deltaWT} ;
-%\factor[above=of deltaGE] {wdeltaGE} {right:LN} {thetaDeltaG} {deltaGE} ;
-%\factor[right=of pC] {wthetapC} {above:Beta} {priorpC} {pC} ;
-%\factor[above=of alpha] {wthetaAlpha} {right:LN} {priorAlpha} {alpha} ;
-%\factor[above=of sigma] {wthetaSigma} {right:LN} {priorSigma} {sigma} ;
-%
-%  % Plates
-%  \plate {expert} {(thetaMu.west)(thetaMu.north)(thetaDeltaG.east)(thetaMu.south)} {$e \in \{ 1\dots E\}\hspace{2.5cm}$};
-%  \plate {catchType} {(y)(pC)(priorpC)} {$c \in \{ \textsf{\small ss, cfr, psc}\}$};
-%  \plate {mrr} {(y)(lambdaWT)(catchType.west)} {$r \in \{1, \dots, 12\}$} ;
-%
-%\end{tikzpicture}
-%\end{figure}
+\begin{figure}
+\centering
+\begin{tikzpicture}[scale= 0.5]
+
+  % Define nodes
+  \node[obs]                               (y) {${\sf y}^{WT}_{\sf r,c}$};
+
+ % PDE model output
+
+	\node[latent, above=of y, yshift = 0.5cm, xshift = -1.25cm] (lambdaWT) {$\lambda^{WT}$};
+	\node[latent, right=of lambdaWT,xshift = 4cm] (lambdaGE) {$\lambda^{DSM}$};
+
+% Observation model parameters
+	\node[latent, above=of y, yshift = 0.0cm, xshift = 1.25cm] (pC) {$p_{c}$};
+
+% PDE model parameters
+
+	\node[latent, above=of lambdaWT, xshift = -0.5cm, yshift = 0.5cm] (muWT) {$\mu_{WT}$};
+	\node[latent, above=of lambdaWT, yshift = 0.5cm, xshift = 0.5cm] (deltaWT) {$D_{WT}$};
+
+	\node[latent, above=of lambdaGE, yshift = 0.5cm, xshift = -0.75cm] (muGE) {$\mu_{DSM}$};
+	\node[latent, above=of lambdaGE, yshift = 0.5cm, xshift = 0.75cm] (deltaGE) {$D_{DSM}$};
+
+	\node[latent, above=of lambdaWT, yshift = 0.5cm, xshift = 2cm] (alpha) {$\alpha$};
+	\node[latent, above=of lambdaWT, yshift = 0.5cm, xshift = 3.5cm] (sigma) {$\sigma$};
+
+  
+% Expert elicited parameters
+
+  	\node[const, above=of muWT, yshift = 1.5cm] (thetaMu) {$\theta_{\mu_{WT}}^e$};
+	\node[const, above=of deltaWT, yshift = 1.5cm] (thetaDelta) {$\theta_{D_{WT}}^e$};
+	\node[const, above=of muGE, yshift = 1.2cm] (thetaMuG) {$\theta_{\mu_{DSM}}^e$};
+	\node[const, above=of deltaGE, yshift = 1.2cm] (thetaDeltaG) {$\theta_{D_{DSM}}^e$};
+
+% Other priors
+
+	\node[const, right=of pC] (priorpC) {$\theta_{c}$};
+	\node[const, above=of alpha] (priorAlpha) {$\theta_{\alpha}$};
+	\node[const, above=of sigma] (priorSigma) {$\theta_{\sigma}$};
+
+% Factors
+
+\factor[above=of lambdaWT] {wWT} {left:$\mathcal{P}$} {muWT,deltaWT, alpha, sigma} {lambdaWT} ;
+\factor[above=of lambdaGE] {wGE} {right:$\mathcal{P}$} {muGE,deltaGE, alpha, sigma} {lambdaGE} ;
+
+\factor[above=of y] {wY} {left:Binom} {lambdaWT,pC} {y} ;
+\factor[above=of muWT] {wmuWT} {left:Beta} {thetaMu} {muWT} ;
+\factor[above=of muGE] {wmuGE} {left:Beta} {thetaMuG} {muGE} ;
+\factor[above=of deltaWT] {wdeltaWT} {right:LN} {thetaDelta} {deltaWT} ;
+\factor[above=of deltaGE] {wdeltaGE} {right:LN} {thetaDeltaG} {deltaGE} ;
+\factor[right=of pC] {wthetapC} {above:Beta} {priorpC} {pC} ;
+\factor[above=of alpha] {wthetaAlpha} {right:LN} {priorAlpha} {alpha} ;
+\factor[above=of sigma] {wthetaSigma} {right:LN} {priorSigma} {sigma} ;
+
+  % Plates
+  \plate {expert} {(thetaMu.west)(thetaMu.north)(thetaDeltaG.east)(thetaMu.south)} {$e \in \{ 1\dots E\}\hspace{2.5cm}$};
+  \plate {catchType} {(y)(pC)(priorpC)} {$c \in \{ \textsf{\small ss, cfr, psc}\}$};
+  \plate {mrr} {(y)(lambdaWT)(catchType.west)} {$r \in \{1, \dots, 12\}$} ;
+
+\end{tikzpicture}
+
+\caption{\label{fig:bhm_schematic} Hierarchical structure of the model for the WT males observations and its connection to the DSM mosquitoes spread and persistence prediction. The parameters $\alpha$ (chemotaxis attraction strength) and $\sigma$ (chemotaxis attraction range) are shared between the two strains.}
+\end{figure}
 
 For a given release \emph{r}, we describe the number of available released mosquitoes at time $t$ as a Poisson random variable with expectation $\lambda_r(t)$, where the dependence of this expectation on location is suppressed:
 \begin{eqnarray}
@@ -508,109 +577,115 @@ Markov Chain Monte Carlo (MCMC) inference methods have been successfully applied
 
 We found a reasonable compromise through the delayed rejection adaptive Metropolis algorithm DRAM, proposed by \cite{Haario2001a}. This MCMC algorithm uses a multivariate proposal distribution that automatically adapts to allow for posterior correlations between the parameters and identifies the directions of principal change along the ridges in the posterior surface. The acceptance rate of the DRAM algorithm is also improved by using a delayed rejection scheme where, instead of immediately advancing the chain following rejection of a parameter set, a second proposal is made that depends on both the current position of the chain and the rejected parameter set. We implemented DRAM by using the function modMCMC in the FME package \cite{Soetaert2010} in R (R Core Team, 2015), using one delayed rejection step, and updating the proposal distribution every 200 iterations. We run a total of $3$ MCMC chains of $15000$ samples each, with $5000$ used as burn-in. The convergence of the chains was assessed using Gelman's $\hat{R}$ criterion \citep[see ][chapter 11]{Gelman2014}.
 
-\subsection*{Posterior prediction validation} 
+\subsection{Posterior prediction validation} 
 We evaluated the accuracy of the posterior model predictions by comparing them against the observed recaptures in the MRR experiment that we deliberately withheld from the inference procedure. The fifth MRR experiment was conducted at the same location as the first four experiments, and under similar conditions with two exceptions: (i) all marked male mosquitoes were released at a single location; and, (ii) a much larger number of mosquitoes were released (Table~\ref{tab:relLoc}). The experimental conditions and population dynamics might therefore be considered to be slightly different than those that prevailed during the first four experiments. If the model is nonetheless able to make sufficiently accurate predictions, then we may be more confident in its ability to be generalized to other similar release scenarios.
 
-\subsection*{Bayesian model averaging}
+\subsection{Bayesian model averaging}
 The field data for the WT male mosquito allows us to calculate the posterior distribution for the WT mortality and dispersal distance parameters. This in turn allows us to measure how well each expert's prior distribution matches the posterior distribution, and weight each expert's response accordingly. We do this by considering each expert's prior as an alternative model, and use the theory of model evidence \cite{robert2001bayesian} to calculate the Bayes factor \citep{Kass1995b, Hosack2020}. 
 
 We assume that experts who are good at predicting outcomes with WT mosquitoes (i.e. those whose prior distributions are close to the posterior distributions) will also be good at predicting outcomes with DSM mosquitoes, and weight the experts' DSM priors by the posterior probability of the models using Bayesian model averaging to obtain a weighted linear pool of expert opinion for the DSM mortality and dispersal distance.
 
-\section*{Results}
-\subsection*{WT parameters}
+\section{Results}
+\subsection{WT parameters}
 Table \ref{tble:sumStatPPpost} provides the summary statistics of the posterior distributions of the PDE model parameters (Figure \ref{fig:prior_posterior} provides both the priors and posteriors for comparison). The use of the MRR data allowed us to provide refined estimates for the parameters of the PDE model. The diffusion coefficient in particular has seen its uncertainty decrease, yielding a mean value of 127 m$^2$ per day. The chemotaxis component has a posterior mean value of about $0.07$, while the range parameter for the mosquito attraction is about $33.9$ m.\\
 
 The posterior samples of the dispersal and swarm attraction parameters are highly correlated such that high dispersal values are associated with low attraction, and vice-versa. We anticipated this and deliberately chose a weakly informative prior for the attraction parameter to allow the data to drive their posterior estimates as far as possible. The largest observable dispersal, however, is clearly dictated by the distance between the sources of attractant (compounds) and the traps laid out in the field. In this instance, all traps were laid within 500m of release sites and compounds \citep[Figure 1]{Epopa2017} limiting the ability to infer the possibility of the much higher dispersal values represented in the expert prior (Figure~\ref{fig:prior_posterior}).
 
-%\begin{figure}[t]
-%%\centering{ \includegraphics[width=0.95\textwidth]{./figure/paramPriorsSpread-1.png}}
-%\centering{ \includegraphics[width=0.95\textwidth]{./Figure2.png}}
-%\caption[Plot of the prior and posterior distributions for the four PDE model parameters.]{Plot of the prior and posterior distributions for the four PDE model parameters.}\label{fig:prior_posterior}
-%\end{figure}
+\begin{figure}[t]
+%\centering{ \includegraphics[width=0.95\textwidth]{./figure/paramPriorsSpread-1.png}}
+\centering{ \includegraphics[width=0.95\textwidth]{./Figure2.png}}
+\caption[Plot of the prior and posterior distributions for the four PDE model parameters.]{Plot of the prior and posterior distributions for the four PDE model parameters.}\label{fig:prior_posterior}
+\end{figure}
 
-%\begin{table}[h]
-%\centering
-%\begingroup\small
-%\begin{tabular}{|c|ccc|}
-%\hline
-%Parameter & Mean & Q05 & Q95 \\\hline
-%Mortality - $\mu$ & 0.16 (0.14) & 0.11 (0.10) & 0.24 (0.21)\\
-%Diffusion - $D$ & 127.0 & 113.7 & 140.7\\
-%Swarm attraction - $\alpha$ & 0.07 & 0.03 & 0.10\\
-%Swarm range - $\sigma$ & 33.9 & 19.8 & 56.1\\
-%Catchability psc - $p_{psc}$ & 0.18 & 0.11 & 0.25\\
-%Catchability cfr - $p_{cfr}$ & 0.03 & 0.02 & 0.05\\
-%Catchability ss - $p_{ss}$ & 0.29 & 0.24 & 0.34\\
-%\hline
-%\end{tabular}
-%\endgroup
-%\caption{\label{tble:sumStatPPpost} Summary statistics for the posterior distributions of the PDE model parameters inferred from the WT MRRs. In brackets in the first line we added the equivalent daily mortality rate value, for ease of comparison with other studies.}
-%\end{table}
+\begin{table}[h]
+\centering
+\begingroup\small
+\begin{tabular}{|c|ccc|}
+\hline
+Parameter & Mean & Q05 & Q95 \\\hline
+Mortality - $\mu$ & 0.16 (0.14) & 0.11 (0.10) & 0.24 (0.21)\\
+Diffusion - $D$ & 127.0 & 113.7 & 140.7\\
+Swarm attraction - $\alpha$ & 0.07 & 0.03 & 0.10\\
+Swarm range - $\sigma$ & 33.9 & 19.8 & 56.1\\
+Catchability psc - $p_{psc}$ & 0.18 & 0.11 & 0.25\\
+Catchability cfr - $p_{cfr}$ & 0.03 & 0.02 & 0.05\\
+Catchability ss - $p_{ss}$ & 0.29 & 0.24 & 0.34\\
+\hline
+\end{tabular}
+\endgroup
+\caption{\label{tble:sumStatPPpost} Summary statistics for the posterior distributions of the PDE model parameters inferred from the WT MRRs. In brackets in the first line we added the equivalent daily mortality rate value, for ease of comparison with other studies.}
+\end{table}
 
-\subsection*{Spread and persistence of male WT mosquitoes}
-Figure \ref{fig:Post_Data} provides an overview of the expected evolution of the number of mosquitoes caught in the set of traps set for the fifth MRR (just $14$ selected locations where at least $1$ mosquito was caught during MRR $5$). When comparing the model outcomes to the actual capture data, we note that of the $365$ observations (of the number of mosquitoes caught in a given trap at a given time), only $11$ observations report numbers outside the $90\%$ credible interval given by the model, providing a good level of confidence on the ability of the model to capture the general dynamic, and its ability to make usable predictions both in space and time about the spread and dispersal of WT strain mosquitoes. The reported RMSE for this cross-validated experiment is $0.335$.
+\subsection{Spread and persistence of male WT mosquitoes}
+Figure \ref{fig:Post_Data} provides an overview of the expected evolution of the number of mosquitoes caught in the set of traps set for the fifth MRR \DIFaddbegin \DIFadd{(just $14$ selected locations where at least $1$ mosquito was caught during MRR $5$)}\DIFaddend . When comparing the model outcomes to the actual capture data, we note that of the \DIFdelbegin \DIFdel{70 observations (}\DIFdelend \DIFaddbegin \DIFadd{$365$ observations (of the }\DIFaddend number of mosquitoes caught in a given trap at a given time), only \DIFdelbegin \DIFdel{2 are }\DIFdelend \DIFaddbegin \DIFadd{$11$ observations report numbers }\DIFaddend outside the $90\%$ credible interval given by the model, providing a good level of confidence on the ability of the model to capture the general dynamic, and its ability to make usable predictions both in space and time about the spread and dispersal of WT strain mosquitoes. \DIFaddbegin \DIFadd{The reported RMSE for this cross-validated experiment is $0.335$.
+}\DIFaddend 
 
 
-%\begin{figure}[t]
-%%\centering{ \includegraphics[width=0.95\textwidth]{./figure/Post_Data-1.png}}
-%\centering{ \includegraphics[width=0.95\textwidth]{./Figure3.png}}
-%\caption[Plot of the true observations (red crosses) and the expected number of catches (orange line) from the simulated model]{Plot of the true observations (red crosses) and the posterior predictive expected number of catches (orange line) from the simulated model, as a function of days. The orange shade represent the $90\%$ credible interval for the number of catches at the specified location. It is expected that $90\%$ of the red crosses falls within the orange polygon.}\label{fig:Post_Data}
-%\end{figure}
+\begin{figure}[t]
+%\centering{ \includegraphics[width=0.95\textwidth]{./figure/Post_Data-1.png}}
+\centering{ \includegraphics[width=0.95\textwidth]{./Figure3.png}}
+\caption[Plot of the true observations (red crosses) and the expected number of catches (orange line) from the simulated model]{Plot of the true observations (red crosses) and the posterior predictive expected number of catches (orange line) from the simulated model, as a function of days. The orange shade represent the $90\%$ credible interval for the number of catches at the specified location. It is expected that $90\%$ of the red crosses falls within the orange polygon.}\label{fig:Post_Data}
+\end{figure}
 
-\subsection*{DSM parameters}
+\subsection{DSM parameters}
 The weighted linear pool priors for DSM mortality and diffusion (weighted according to the Bayesian model averaging approach detailed above) are summarised in Table \ref{tble:sumStatPPpostbma}. The two parameters are quite different from the WT posterior estimates, with the DSM mortality prior six times higher than the WT posterior, and the dispersal multiple orders of magnitude bigger. 
 
 The difference between the posterior distributions for WT and DSM mortality reflects the effect of the Bayesian model averaging but also the significant reduction in uncertainty that occurs when moving from prior to posterior distributions (see Figure \ref{fig:prior_posterior}) as often occurs in a Bayesian analysis. The linear pool of expert prior distribution for the dispersal distance of WT mosquitoes was also very much higher than its posterior distribution estimated using the data. It is possible therefore that the weighted linear pool prior for DSM dispersal will also prove to be an overestimate, noting of course that the posterior estimates of WT dispersal are conditional on the design of the MRR experiments which was established before this analysis.
 
-%\begin{table}[h]
-%\centering
-%\begingroup\small
-%\begin{tabular}{|c|ccc|}
-%\hline
-%Parameter & Mean & Q05 & Q95  \\\hline
-%Mortality - $\mu$ & 1.05 (0.65) & 0.19 (0.17) & 2.42 (0.91)\\
-%Diffusion - $D$ & 753 $\times$ 10$^{3}$ & 8.77 & 112  $\times$ 10$^{4}$\\
-%\hline
-%\end{tabular}
-%\endgroup
-%\caption{\label{tble:sumStatPPpostbma} Updated statistics for the PDE model parameters using the WT MRRs results and the DSM priors. In brackets in the first line we added the equivalent daily mortality rate value, for ease of comparison with other studies.}
-%\end{table}
+\begin{table}[h]
+\centering
+\begingroup\small
+\begin{tabular}{|c|ccc|}
+\hline
+Parameter & Mean & Q05 & Q95  \\\hline
+Mortality - $\mu$ & 1.05 (0.65) & 0.19 (0.17) & 2.42 (0.91)\\
+Diffusion - $D$ & 753 $\times$ 10$^{3}$ & 8.77 & 112  $\times$ 10$^{4}$\\
+\hline
+\end{tabular}
+\endgroup
+\caption{\label{tble:sumStatPPpostbma} Updated statistics for the PDE model parameters using the WT MRRs results and the DSM priors. In brackets in the first line we added the equivalent daily mortality rate value, for ease of comparison with other studies.}
+\end{table}
 
-\subsection*{Spread and persistence of male DSM mosquitoes}
+\subsection{Spread and persistence of male DSM mosquitoes}
 The predicted persistence of DSM mosquitoes following a release of a single cohort of 5000 males is summarised in Figure \ref{fig:plotTimeMoxMaxLoc}. The large uncertainty captured in Table \ref{tble:sumStatPPpostbma} is clearly reflected in these predictions: the mean expected survival is estimated to be about 9 to 10 days, with a 90\% probability that the expected number of male DSM mosquitoes falls below 1 by Day 10. The 90\% credible interval, however, is large, and there is a small probability ($\sim 0.05$) that it could take as long about two months for this to occur.
 
-%\begin{figure}[t]
-%%\centering{ \includegraphics[width=0.95\textwidth]{figure/Persistence_SM.png}}
-%\centering{ \includegraphics[width=0.95\textwidth]{./Figure4.png}}
-%\caption[Evolution of the expected number of mosquitoes following a release of $5000$ at location R]{ Evolution of the predictive posterior expected number of mosquitoes following a release of $5000$. Note that the scale of the y axis is logarithmic, making the model predictions linear.}\label{fig:plotTimeMoxMaxLoc}
-%\end{figure}
+\begin{figure}[t]
+%\centering{ \includegraphics[width=0.95\textwidth]{figure/Persistence_SM.png}}
+\centering{ \includegraphics[width=0.95\textwidth]{./Figure4.png}}
+\caption[Evolution of the expected number of mosquitoes following a release of $5000$ at location R]{ Evolution of the predictive posterior expected number of mosquitoes following a release of $5000$. Note that the scale of the y axis is logarithmic, making the model predictions linear.}\label{fig:plotTimeMoxMaxLoc}
+\end{figure}
 
 The dispersal of the DSM mosquitoes is balanced by the mortality rate. Because of this, the DSM are not expected to disperse far from their release site, with the expected number of mosquitoes per cell delineated by the red and orange contours in Figure \ref{fig:plotSpread}. For instance, while the spread is expected to extend on average to up to $500$m away from the release location by day $2$ (with at most a 1\% chance of finding a mosquito further away), the extent then contracts quickly to a limited area (less than $250$m from release location) by day $5$, to finally about $150$m away from the release location at day $12$.
 
-%\begin{figure}[t]
-%%\centering{ \includegraphics[width=0.95\textwidth]{figure/Spread_SM.png}}
-%\centering{ \includegraphics[width=0.9\textwidth]{./Figure5bis.png}}
-%\caption[Spread of the expected number of mosquitoes following a release of $5000$. Orange contour: outside the zone, the probablity of finding no DSM mosquito is $0.99$ or more. Red contour: inide the range, the expected number of DSM mosquito is $1$ or more.]{Spread of the predictive posterior expected number of mosquitoes following a release of $5000$. Orange contour: outside the zone, the probability of finding no DSM mosquito is $0.99$ or more. Red contour: inide the zone, the expected number of DSM mosquitoes is $1$ or more. Black dots: compounds locations.}\label{fig:plotSpread}
-%\end{figure}
+\begin{figure}[t]
+%\centering{ \includegraphics[width=0.95\textwidth]{figure/Spread_SM.png}}
+\centering{ \includegraphics[width=0.9\textwidth]{./Figure5bis.png}}
+\caption[Spread of the expected number of mosquitoes following a release of $5000$. Orange contour: outside the zone, the probablity of finding no DSM mosquito is $0.99$ or more. Red contour: inide the range, the expected number of DSM mosquito is $1$ or more.]{Spread of the predictive posterior expected number of mosquitoes following a release of $5000$. Orange contour: outside the zone, the probability of finding no DSM mosquito is $0.99$ or more. Red contour: inide the zone, the expected number of DSM mosquitoes is $1$ or more. Black dots: compounds locations.}\label{fig:plotSpread}
+\end{figure}
 
-\section*{Discussion}
-This analysis uses a combination of mathematical modelling, Bayesian inference, and expert elicitation to predict the spread and persistence of genetically modified DSM mosquitoes following the release of a single cohort of $5000$ individuals. These predictions were made as part of an independent risk assessment \citep{Hayes2015a, Hayes2018}(\href{https://targetmalaria.org/resources/library/?category=risks_and-assessments}{Available here}), that also addressed the accidental release of fertile female mosquitoes. The results reported here helped determine the scope of the assessment and in particular provided the rationale for excluding the possibility of effects on non-target organisms caused by changes in food web structures or the provision of ecological services: the predicted survival of the DSM population is too short, and the associated population size too small, to cause any noticeable effect on non-target organisms or ecosystem processes.
+\section{Discussion}
+\DIFdelbegin \DIFdel{In this analysis we have used }\DIFdelend \DIFaddbegin \DIFadd{This analysis uses }\DIFaddend a combination of mathematical \DIFdelbegin \DIFdel{modeling}\DIFdelend \DIFaddbegin \DIFadd{modelling}\DIFaddend , Bayesian inference, and expert elicitation to predict the spread and persistence of genetically modified DSM mosquitoes following the release of a single cohort of $5000$ individuals. These predictions were made as part of an independent risk assessment \DIFdelbegin \DIFdel{that was completed }\DIFdelend \DIFaddbegin \DIFadd{\mbox{%DIFAUXCMD
+\citep{Hayes2015a, Hayes2018}}\hspace{0pt}%DIFAUXCMD
+(}\href{https://targetmalaria.org/resources/library/?category=risks_and-assessments}{Available here}\DIFadd{), that also addressed the accidental release of fertile female mosquitoes. The results reported here helped determine the scope of the assessment and in particular provided the rationale for excluding the possibility of effects on non-target organisms caused by changes in food web structures or the provision of ecological services: the predicted survival of the DSM population is too short, and the associated population size too small, to cause any noticeable effect on non-target organisms or ecosystem processes.
+}
 
-The risk assessment was finalised and made public in May 2018, prior to the decision by the National Biosafety Agency (NBA) of Burkina Faso to authorise the field trial (July 2018), but after the submission by Target Malaria of a biosafety application to the NBA seeking authorisation for the release (November 2017, \href{https://targetmalaria.org/resources/library/?category=development-pathway}{See here}). The field release itself occurred in July 2019 (\href{https://tinyurl.com/y4qr9lc5}{See here}). We anticipate that the results from this field experiment will soon be forthcoming and provide an important opportunity to test the accuracy of the predictions presented here. The risk assessment results are case-specific and do not generalise to other genetic control strategies that involve (for example) population modification strategies.
+\DIFadd{The risk assessment was finalised and made public }\DIFaddend in May 2018\DIFaddbegin \DIFadd{, }\DIFaddend prior to the \DIFdelbegin \DIFdel{proposed field release \mbox{%DIFAUXCMD
+\citep{Hayes2015a, Hayes2018}}\hspace{0pt}%DIFAUXCMD
+}\DIFdelend \DIFaddbegin \DIFadd{decision by the National Biosafety Agency (NBA) of Burkina Faso to authorise the field trial (July 2018), but after the submission by Target Malaria of a biosafety application to the NBA seeking authorisation for the release (November 2017, }\href{https://targetmalaria.org/resources/library/?category=development-pathway}{See here}\DIFadd{)}\DIFaddend . The field release itself occurred in July 2019 (\href{https://tinyurl.com/y4qr9lc5}{See here}). We anticipate that the results from this field experiment will soon be forthcoming and provide an important opportunity to test the accuracy of the predictions presented here. \DIFaddbegin \DIFadd{The risk assessment results are case-specific and do not generalise to other genetic control strategies that involve (for example) population modification strategies.
+}\DIFaddend 
 
-In this analysis we were able to validate the model predictions for wild type mosquitoes by holding back a proportion of the observation data. This also enabled us to use Bayesian model averaging to identify experts who were more accurate in their prior predictions. By allowing the opinions of these experts to carry greater weight we were also able to reduce uncertainty in the prior predictions for DSM mosquitoes. This approach assumes, however, that experts who make more accurate predictions about wild type mosquitoes will also make better predictions about genetically modified mosquitoes. We will also be able to test this assumption once the results of the DSM field release are published.
+In this \DIFdelbegin \DIFdel{example }\DIFdelend \DIFaddbegin \DIFadd{analysis }\DIFaddend we were able to validate the model predictions for wild type mosquitoes by holding back a proportion of the observation data. This also enabled us to use Bayesian model averaging to identify experts who were more accurate in their prior predictions. By allowing the opinions of these experts to carry greater weight we were also able to reduce uncertainty in the prior predictions for DSM mosquitoes. This approach assumes\DIFaddbegin \DIFadd{, however, }\DIFaddend that experts who make more accurate predictions about wild type mosquitoes will also make better predictions about genetically modified mosquitoes. We will also be able to test this assumption once the results of the DSM field release are published.
 
-Our results demonstrate how field observations greatly reduce the uncertainty between the prior information elicited with independent domain experts and the posterior distribution. Despite their relatively large uncertainty, our experience is that expert-derived prior distributions are essential when attempting to run inference over the multi-dimensional parameter space that dynamic population models demand, and that careful elicitation will therefore continue to be an essential component of future risk assessment studies.
+Our results demonstrate how field observations greatly reduce the uncertainty between the prior information elicited with independent domain experts and the posterior distribution. Despite their relatively large uncertainty, \DIFdelbegin \DIFdel{however, }\DIFdelend our experience is that expert-derived prior distributions are essential when attempting to run inference over the multi-dimensional parameter space that dynamic population models demand, and that careful elicitation will therefore continue to be an essential component of future risk assessment studies.
 
-Our posterior estimates of WT dispersal are conditional on a series of MRR experiments that were conducted prior to the elicitation of the dispersal prior distributions. These priors played no part in the experimental design, and the difference between the prior and posterior distributions depends on this design. This difference may reflect conservative prior estimates of mosquitoes' mean daily dispersal when in the vicinity of attractants (swarm locations) but it may also be an artefact of the MRR design that focussed efforts in and around village compounds to maximise the number of recaptures. As \cite{Epopa2017} notes, however, further intensive sampling studies outside or around villages will be useful to ensure that posterior estimates of dispersal are not blind to long range dispersal outcomes that are not witnessed because of the recapture site design. There is also the possibility of an impact of genetic modification on dispersal either through life history traits linked to vagility or perhaps host-seeking behavioural traits. If vagility is negatively impacted then dispersal could be less for DSM compared to wild-type, but if host-seeking ability was instead curtailed then dispersal could perhaps decrease for DSM relative to wild-type. As mentioned above, the analysis conducted here could be repeated to take into account the DSM MRR data that was in the planning stages at the time of the risk assessment.
+Our posterior estimates of WT dispersal are conditional on a series of MRR experiments that were conducted prior to the elicitation of the dispersal prior distributions. These priors played no part in the experimental design, and the difference between the prior and posterior distributions depends on this design. This difference may reflect conservative prior estimates of mosquitoes' mean daily dispersal when in the vicinity of attractants (swarm locations) but it may also be an artefact of the MRR design that focussed efforts in and around village compounds to maximise the number of recaptures. As \cite{Epopa2017} notes, however, further intensive sampling studies outside or around villages will be useful to ensure that posterior estimates of dispersal are not blind to long range dispersal outcomes that are not witnessed because of the recapture site design. \DIFaddbegin \DIFadd{There is also the possibility of an impact of genetic modification on dispersal either through life history traits linked to vagility or perhaps host-seeking behavioural traits. If vagility is negatively impacted then dispersal could be less for DSM compared to wild-type, but if host-seeking ability was instead curtailed then dispersal could perhaps decrease for DSM relative to wild-type. As mentioned above, the analysis conducted here could be repeated to take into account the DSM MRR data that was in the planning stages at the time of the risk assessment.
+}\DIFaddend 
 
-We believe that dynamic population models will form a central component of any risk-based governance system for gene drive modified mosquitoes. We therefore suspect that confidence in this governance structure will likely depend on the extent to which risk assessments are able to predict the spread and persistence of mosquitoes carrying gene drive constructs, within the bounds of adequate accuracy. Critically, a staged release strategy provides the opportunity to compare the predictions of these types of models against observed outcomes, learn how to approach the modelling and inference challenges and gradually define the bounds of accuracy that regulators and stakeholders believe are adequate.
+We believe that dynamic population models will form a central component of any risk-based governance system for gene drive modified mosquitoes. We therefore suspect that confidence in this governance structure will likely depend on the extent to which risk assessments are able to predict the spread and persistence of mosquitoes carrying gene drive constructs, within the bounds of adequate accuracy. Critically, a staged release strategy provides the opportunity to compare the predictions of these types of models against observed outcomes, learn how to approach the \DIFdelbegin \DIFdel{modeling }\DIFdelend \DIFaddbegin \DIFadd{modelling }\DIFaddend and inference challenges and gradually define the bounds of accuracy that \DIFdelbegin \DIFdel{are }\DIFdelend regulators and stakeholders believe are adequate.
 
-This staged-learning is borne out by this analysis: the reproductive containment strategy utilised in the DSM mosquitoes provides a good, relatively simple, starting point for this type of analysis. The reaction dynamics in our model are greatly simplified by virtue of the fact that the released make mosquitoes are sterile. The dynamic models for the second stage in Target Malaria's pathway, namely self-limiting male bias strains, will be more complicated because they must accommodate the birth processes and genetic dynamics that are not relevant here, and also other potentially important inter-specific interactions \citep{Beeton2020}. The models for the third and final stage, that is self-sustaining driving male bias strains, will be more complicated again particularly because the inter-specific interactions are likely to be more important and because the spatio-temporal scope of the analysis will be significantly larger.
+This staged-learning is borne out by this analysis: the reproductive containment strategy utilised in the DSM mosquitoes provides a good, relatively simple, starting point for this type of analysis. The reaction dynamics in our model are greatly simplified by virtue of the fact that the released \DIFaddbegin \DIFadd{make }\DIFaddend mosquitoes are sterile. The dynamic models for the second stage in Target Malaria's pathway, namely self-limiting male bias strains, will be more complicated because they must accommodate the birth processes and genetic dynamics that are not relevant here, and also other potentially important inter-specific interactions \citep{Beeton2020}. The models for the third and final stage, that is self-sustaining driving male bias strains, will be more complicated again particularly because the inter-specific interactions are likely to be more important and because the spatio-temporal scope of the analysis will be significantly larger.
 
-\section*{Conclusion}
-
-Our analysis demonstrates the strength of the Bayesian approach in the context of staged-learning. Given its qualities, we believe this paradigm is the most appropriate to handle the prediction and risk assessment challenges that novel, gene drive-based strategies for controlling malaria vectors will pose in the coming years.
+Our analysis demonstrates the strength of the Bayesian approach in this context. Given its qualities, we believe this paradigm is the most appropriate to handle the prediction and risk assessment challenges that novel, gene drive-based strategies for controlling malaria vectors will pose in the coming years.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                          %%
@@ -619,17 +694,6 @@ Our analysis demonstrates the strength of the Bayesian approach in the context o
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{backmatter}
-
-\section*{Additional files}
-
-\paragraph*{Additional file S1: Elicitation process, questions and answers.}
-
-\paragraph*{Additional file S2: Derivation of the relationship between the diffusion coefficient and the average dispersal distance.}
-
-
-\section*{Abbreviations}
-
-WT: wild tpye; DSM: dominant sterile male; MRR: mark release recapture; GDMMs: gene-drive modified mosquitoes; PDE: partial differential equation; PSC: pyrethroid spray catches; SS: swarm sampling; cfr: clay pots resting catches; BHM: Bayesian hierarchical model; MCMC: Markov chain Monte Carlo; DRAM: delayed rejection adaptive Metropolis; NBA: National Biosafety Agency; 
 
 \section*{Declaration}
 
@@ -699,27 +763,18 @@ The datasets used and/or analysed during the current study are available from th
 
 %%
 %% Do not use \listoffigures as most will included as separate files
-\newpage
-\section*{Legends to figures}
-\begin{figure}[h!]
-\caption{\csentence{Staticial model strucutre.}\label{fig:bhm_schematic} Hierarchical structure of the model for the WT males observations and its connection to the DSM mosquitoes spread and persistence prediction. The parameters $\alpha$ (chemotaxis attraction strength) and $\sigma$ (chemotaxis attraction range) are shared between the two strains.}
-\end{figure}
 
-\begin{figure}[h!]
-\caption{\csentence{Prior and posterior distributions}\label{fig:prior_posterior} Plot of the prior (elicited) and posterior (inferred) distributions for the four PDE model parameters ($\alpha$, $\mu$, $\sigma$, $D$). (a) Dispersal parameter $D$. (b) Daily mortality $\mu$. (c) Swarm attractiveness $\alpha$. (d) Swarm attractiveness decay $\sigma$.}
-\end{figure}
-      
-\begin{figure}[h!]
-\caption{\csentence{Model performance}\label{fig:Post_Data} Plot of the true observations (red crosses) and the posterior predictive expected number of catches (orange line) from the simulated model, as a function of days. The orange shade represent the $90\%$ credible interval for the number of catches at the specified location. It is expected that $90\%$ of the red crosses falls within the orange polygon.}
-\end{figure}
-      
-\begin{figure}[h!]
-\caption{\csentence{Model prediction of survival}\label{fig:plotTimeMoxMaxLoc} Evolution of the predictive posterior expected number of mosquitoes following a release of $5000$. Note that the scale of the y axis is logarithmic, making the model predictions linear.}
-\end{figure}
-      
-\begin{figure}[h!]
-\caption{\csentence{Model prediction of dispersal}\label{fig:plotSpread} Spread of the predictive posterior expected number of mosquitoes following a release of $5000$. Orange contour: outside the zone, the probability of finding no DSM mosquito is $0.99$ or more. Red contour: inide the zone, the expected number of DSM mosquitoes is $1$ or more. Black dots: compounds locations. (a) Extent after $2$ days. (b) Extent after $5$ days. (c) Extent after $9$ days. (d) Extent after $12$ days. }
-\end{figure}
+%\section*{Figures}
+%  \begin{figure}[h!]
+%  \caption{\csentence{Sample figure title.}
+%      A short description of the figure content
+%      should go here.}
+%      \end{figure}
+%
+%\begin{figure}[h!]
+%  \caption{\csentence{Sample figure title.}
+%      Figure legend text.}
+%      \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                               %%
@@ -729,113 +784,170 @@ The datasets used and/or analysed during the current study are available from th
 
 %% Use of \listoftables is discouraged.
 %%
-\newpage
-\section*{Tables}
-
-\begin{table}[h!]
-\centering
-\begingroup
-\caption{\label{tble:parameters} The parameters and units of the diffusion-advection-reaction model for sterile male mosquitoes.} 
-\begin{tabular}{cp{60mm}c}
-\hline
-Name & Description & Units \\
-\hline
-$\va$ & Attractiveness of swarms & reward$^-1$.$m^-1$\\
-%$\vb$ & Decay of attractiveness & \colorbox{orange!30}{??} \\
-$\vm$ & Male mosquito mortality rate &  day$^{-1}$\\ 
-$\lambda$ & The expected number of male mosquitoes & Number of mosquitoes per areal unit \\ 
-$\vd$ & Isotropic diffusion coefficient & $m^2$.day$^-1$\\ 
-$\sigma$ & Decay of attraction to swarm sites  & $m$\\
-\hline
-\end{tabular}
-\endgroup
-
-\end{table}
-
-\begin{table}[h!]
-\centering
-\begingroup
-\caption{Summary of the MRR experiments conducted by \cite{Epopa2017} in Burkina Faso. The last column presents the average distance for recapture (in meters). We use the results of the first four experiments to parameterise our model and calculate Bayes factor for expert-derived priors, and use the fifth MRR experiment is to validate the model predictions.} 
-\label{tab:relLoc}
-\begin{tabular}{cccccccc}
-\hline
-MRR & Date & Release site & Longitude & Latitude & N released & N captured & Distance\\ 
-\hline
-1 & 2013-10-09 & A & -4.4724 & 11.2347 & 1146 & 32 & 140\\ 
-1 & - & B & -4.4755 & 11.2342 & 1158 & 9 & 344\\ 
-1 & - & C & -4.4718 & 11.2318 & 1103 & 6 & 205\\ 
-2 & 2014-05-07 & A & -4.4724 & 11.2347 & 1878 & 6 & 94\\ 
-2 & - & B & -4.4755 & 11.2342 & 1655 & 1 & 266\\ 
-2 & - & C & -4.4718 & 11.2318 & 1734 & 1 & 193\\ 
-3 & 2014-09-04 & A & -4.4724 & 11.2347 & 1665 & 56 & 133\\ 
-3 & - & B & -4.4755 & 11.2342 & 1673 & 4 & 440\\ 
-3 & - & C & -4.4718 & 11.2318 & 1684 & 13 & 205\\ 
-4 & 2015-04-09 & A & -4.4724 & 11.2347 & 2107 & 1 & 55\\ 
-4 & - & B & -4.4755 & 11.2342 & 2013 & 3 & 386\\ 
-4 & - & C & -4.4718 & 11.2318 & 1953 & 18 & 190\\ 
-5 & 2015-10-09 & C & -4.4724 & 11.2347 & 5992 & 18 & 141\\ 
-\hline
-\end{tabular}
-\endgroup
-\end{table}
-
-\begin{table}[h!]
-\centering
-\begingroup
-\caption{\label{tble:prior} Process (PDE model) and observation model parameters, prior distributions and sources. SOP: Standard Operating Procedures: the procedure used during the MRR experiments are described in a set of SOP that were made available to us as part of an independent risk assessment process.}
-\begin{tabular}{llll}
-\hline
-Parameter & Prior parameters & Prior distribution & Source \\\hline
-Mortality ($\mu$) & $ \theta_\mu$: mixture (see Fig \ref{fig:prior_posterior}) & Beta & Experts\\
-Diffusion ($D$) & $\theta_D$: mixture (see Fig \ref{fig:prior_posterior}) & Log-normal & Experts\\
-Swarm attraction ($\alpha$) & $\theta_\alpha = \{ -2, 1 \}$ & Log-normal &  Weakly informative \\ 
-Swarm range ($\sigma$) &  $\theta_\sigma = \{3.5, 4 \}$ & Log-normal &  Literature\\ 
-Catchability cfr ($p_{cfr}$) & $\theta_{cfr} =\{1, 1\}$ & Beta & Weakly informative \\ 
-Catchability psc ($p_{psc}$) & $\theta_{psc} =\{1.4, 1\}$ & Beta & SOP \\ 
-Catchability ss ($p_{ss}$) & $\theta_{ss} =\{10, 20\}$ & Beta & SOP \\
-\hline
-\end{tabular}
-\endgroup
-\end{table}
-
-\begin{table}[h!]
-\centering
-\begingroup
-\caption{\label{tble:sumStatPPpost} Summary statistics for the posterior distributions of the PDE model parameters inferred from the WT MRRs. In brackets in the first line we added the equivalent daily mortality rate value, for ease of comparison with other studies.}
-\begin{tabular}{lccc}
-\hline
-Parameter & Mean & Q05 & Q95 \\\hline
-Mortality - $\mu$ & 0.16 (0.14) & 0.11 (0.10) & 0.24 (0.21)\\
-Diffusion - $D$ & 127.0 & 113.7 & 140.7\\
-Swarm attraction - $\alpha$ & 0.07 & 0.03 & 0.10\\
-Swarm range - $\sigma$ & 33.9 & 19.8 & 56.1\\
-Catchability psc - $p_{psc}$ & 0.18 & 0.11 & 0.25\\
-Catchability cfr - $p_{cfr}$ & 0.03 & 0.02 & 0.05\\
-Catchability ss - $p_{ss}$ & 0.29 & 0.24 & 0.34\\
-\hline
-\end{tabular}
-\endgroup
-\end{table}
-
-\begin{table}[h!]
-\centering
-\begingroup
-\caption{\label{tble:sumStatPPpostbma} Updated statistics for the PDE model parameters using the WT MRRs results and the DSM priors. In brackets in the first line we added the equivalent daily mortality rate value, for ease of comparison with other studies.}
-\begin{tabular}{lccc}
-\hline
-Parameter & Mean & Q05 & Q95  \\\hline
-Mortality - $\mu$ & 1.05 (0.65) & 0.19 (0.17) & 2.42 (0.91)\\
-Diffusion - $D$ & 753 $\times$ 10$^{3}$ & 8.77 & 112  $\times$ 10$^{4}$\\
-\hline
-\end{tabular}
-\endgroup
-\end{table}
+%\section*{Tables}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                               %%
 %% Additional Files              %%
 %%                               %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\DIFdelbegin %DIFDELCMD < \newpage
+%DIFDELCMD < %%%
+\section*{\DIFdel{Additional Files}}
+%DIFAUXCMD
+\DIFdelend 
 
-\end{backmatter}
+\DIFdelbegin \subsection{\DIFdel{Additional file 1 -- Elicitation process, questions and answers}}
+%DIFAUXCMD
+\addtocounter{subsection}{-1}%DIFAUXCMD
+%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\paragraph{\DIFdel{Elicitation of the mortality parameter}}
+%DIFAUXCMD
+\addtocounter{paragraph}{-1}%DIFAUXCMD
+\DIFdel{The experts were interviewed in person and individually. They were asked the following question }\emph{\DIFdel{"What is the mortality rate of WT/DSM males mosquitoes once outside the insectary?"}}%DIFAUXCMD
+\DIFdel{, where the mortality rate could be elicited in terms of probability of  survival or death. Experts were able to also choose which quantiles of the PRIOR  parameter distribution they wanted to elicit. Table \ref{tble:elicit_mort} summarises the details of each expert's opinion. The experts answered either in terms of probability of survival ($p_S$) or  death ($p_d$), which then we transformed into the mortality parameter $\mu$ of the PDE model using the relationship $\mu = - \log( 1-p_D)$, or in case of survival $\mu = -\log p_S$.
+}%DIFDELCMD < \begin{table}[h]
+%DIFDELCMD < \centering
+%DIFDELCMD < %%%
+%DIF < \begingroup\small
+%DIFDELCMD < \begin{tabular}{|c|cccc|}
+%DIFDELCMD < \hline
+%DIFDELCMD < %%%
+\DIFdelFL{Mosquito }%DIFDELCMD < & %%%
+\DIFdelFL{Parameter }%DIFDELCMD < & %%%
+\DIFdelFL{Distribution }%DIFDELCMD < & %%%
+\DIFdelFL{Quantiles }%DIFDELCMD < & %%%
+\DIFdelFL{Values  }%DIFDELCMD < \\\hline
+%DIFDELCMD < %%%
+\DIFdelFL{Wild type }%DIFDELCMD < & %%%
+\DIFdelFL{Mortality }%DIFDELCMD < & %%%
+\DIFdelFL{beta }%DIFDELCMD < & %%%
+\DIFdelFL{\{0.1, 0.9\} }%DIFDELCMD < & %%%
+\DIFdelFL{\{0.1, 0.2\}}%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{Wild type }%DIFDELCMD < & %%%
+\DIFdelFL{Mortality }%DIFDELCMD < & %%%
+\DIFdelFL{beta }%DIFDELCMD < & %%%
+\DIFdelFL{\{0.05, 0.95\} }%DIFDELCMD < & %%%
+\DIFdelFL{\{0.055, 0.165\}}%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{Wild type }%DIFDELCMD < & %%%
+\DIFdelFL{Survival }%DIFDELCMD < & %%%
+\DIFdelFL{beta }%DIFDELCMD < & %%%
+\DIFdelFL{\{0.15, 0.85\} }%DIFDELCMD < & %%%
+\DIFdelFL{\{0.5, 0.75\}}%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{Sterile male }%DIFDELCMD < & %%%
+\DIFdelFL{Mortality }%DIFDELCMD < & %%%
+\DIFdelFL{beta }%DIFDELCMD < & %%%
+\DIFdelFL{\{0.05, 0.95\} }%DIFDELCMD < & %%%
+\DIFdelFL{\{0.066, 0.198\}}%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{Sterile male }%DIFDELCMD < & %%%
+\DIFdelFL{Mortality }%DIFDELCMD < & %%%
+\DIFdelFL{beta }%DIFDELCMD < & %%%
+\DIFdelFL{\{0.05, 0.95\} }%DIFDELCMD < & %%%
+\DIFdelFL{\{0.2, 0.9\}}%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{Sterile male }%DIFDELCMD < & %%%
+\DIFdelFL{Survival }%DIFDELCMD < & %%%
+\DIFdelFL{beta }%DIFDELCMD < & %%%
+\DIFdelFL{\{0.15, 0.85\} }%DIFDELCMD < & %%%
+\DIFdelFL{\{0.3, 0.6\}}%DIFDELCMD < \\
+%DIFDELCMD < \hline
+%DIFDELCMD < \end{tabular}
+%DIFDELCMD < %%%
+%DIF < \endgroup
+%DIFDELCMD < \caption{%
+{%DIFAUXCMD
+%DIFDELCMD < \label{tble:elicit_mort} %%%
+\DIFdelFL{Elicited values for the probability of death / survival. }}
+%DIFAUXCMD
+%DIFDELCMD < \end{table}
+%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\paragraph{\DIFdel{Elicitation of the dispersion parameter}}
+%DIFAUXCMD
+\addtocounter{paragraph}{-1}%DIFAUXCMD
+\DIFdel{The experts  were asked the following question }\emph{\DIFdel{"What is the average daily dispersal distance of a WT/DSM male mosquito?"}}%DIFAUXCMD
+\DIFdel{, where the dispersal distance was understood as the distance from the origin a mosquito could be found after a duration of 1 day. Experts were able to choose which quantiles of the prior parameter distribution they wanted to elicit. Table \ref{tble:elicit_disp} summarises the details of each expert's opinion. The relationship between the elicited parameter $d$ and the diffusion coefficient $D$ is given below.
+}%DIFDELCMD < \begin{table}[h]
+%DIFDELCMD < \centering
+%DIFDELCMD < %%%
+%DIF < \begingroup\small
+%DIFDELCMD < \begin{tabular}{|c|ccc|}
+%DIFDELCMD < \hline
+%DIFDELCMD < %%%
+\DIFdelFL{Mosquito }%DIFDELCMD < & %%%
+\DIFdelFL{Distribution }%DIFDELCMD < & %%%
+\DIFdelFL{Quantiles }%DIFDELCMD < & %%%
+\DIFdelFL{Values  }%DIFDELCMD < \\\hline
+%DIFDELCMD < %%%
+\DIFdelFL{Wild type }%DIFDELCMD < & %%%
+\DIFdelFL{lognormal }%DIFDELCMD < & %%%
+\DIFdelFL{\{0.05, 0.95\} }%DIFDELCMD < & %%%
+\DIFdelFL{\{0.01, 2.9\}}%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{Wild type }%DIFDELCMD < & %%%
+\DIFdelFL{lognormal }%DIFDELCMD < & %%%
+\DIFdelFL{\{0.25, 0.75\} }%DIFDELCMD < & %%%
+\DIFdelFL{\{0.02, 0.2\}}%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{Sterile male }%DIFDELCMD < & %%%
+\DIFdelFL{lognormal }%DIFDELCMD < & %%%
+\DIFdelFL{\{0.05, 0.95\} }%DIFDELCMD < & %%%
+\DIFdelFL{\{0.008, 2.32\}}%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{Sterile male }%DIFDELCMD < & %%%
+\DIFdelFL{lognormal }%DIFDELCMD < & %%%
+\DIFdelFL{\{0.25, 0.75\} }%DIFDELCMD < & %%%
+\DIFdelFL{\{0.01, 0.1\}}%DIFDELCMD < \\
+%DIFDELCMD < \hline
+%DIFDELCMD < \end{tabular}
+%DIFDELCMD < %%%
+%DIF < \endgroup
+%DIFDELCMD < \caption{%
+{%DIFAUXCMD
+%DIFDELCMD < \label{tble:elicit_disp} %%%
+\DIFdelFL{Elicited values for the average daily dispersal. }}
+%DIFAUXCMD
+%DIFDELCMD < \end{table}
+%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\subsection{\DIFdel{Additional file 2 -- Derivation of the relationship between the diffusion coefficient and the average dispersal distance}}
+%DIFAUXCMD
+\addtocounter{subsection}{-1}%DIFAUXCMD
+\DIFdel{Let $d$ be the average dispersal distance after $t$ days. In order to determine what prior on $D$ the prior elicited from $d$ gives us, we need to establish the relationship between these two variables. Given the elicitation question, we have 
+}\begin{displaymath} \DIFdel{d = \int_{\mathbf{R}_{+}}  \sqrt{\langle x, x  \rangle} \times p(x) dx}\end{displaymath}%DIFAUXCMD
+\DIFdel{where $p(x)$ is the probability to find the mosquito at location $x$, and $\langle x, x  \rangle$ is the Euclidean norm. This can be empirically estimated by 
+}\begin{displaymath} \DIFdel{d = \frac{1}{n}\sum^n  \sqrt{\langle x_i, x_i  \rangle}}\end{displaymath}%DIFAUXCMD
+\DIFdel{where $x_i$ is the location of a mosquito $i$ after $t$ days , given it has been release from $(0,0)$. If we note  $f(x)$ the daily dispersal distance :
+}\begin{displaymath} \DIFdel{f(x) = \sqrt{\langle x, x  \rangle} }\end{displaymath}%DIFAUXCMD
+\DIFdel{we can then express the above equation in terms of expectation (in the random variable sense): 
+}\begin{displaymath}\DIFdel{d = \mathsf{E}[ f(x)]}\end{displaymath}%DIFAUXCMD
+%DIFDELCMD <  
+%DIFDELCMD <  %%%
+\DIFdel{Because we assume that the mosquito behaviour is governed by the PDE model described in the model section of the article, we can write:
+}\begin{displaymath}\DIFdel{p(X_t = x) = \frac{1}{4 \pi D t} \exp\Big\{-\frac{\langle x, x  \rangle}{4 D t}\Big\}}\end{displaymath}%DIFAUXCMD
+\DIFdel{where $X_t$ is the random variable describing the location of that same released mosquito at time $t$, and $x$ is a given location in $\mathbb{R}^2$. 
+So we have:
+}\begin{displaymath} \DIFdel{\mathsf{E} \Big[ f(x) \Big] = \int_{\mathbb{R}^2} \frac{\sqrt{\langle x, x  \rangle}}{4 \pi D t} \exp\Big\{-\frac{\langle x, x  \rangle}{4 D t}\Big\} dx }\end{displaymath}%DIFAUXCMD
+\DIFdel{We can perform a change of variable, $x_1 = r \cos(\theta)$ and $x_2 = r \sin(\theta)$ where $r \in [0, +\infty)$ and $\theta \in [0, 2 \pi]$:
+}\begin{displaymath} \DIFdel{d = \int_{\mathbb{R_+}} \int_{[0, 2 \pi]} \frac{r^2}{4 \pi D t} \exp\Big\{-\frac{r^2}{4 D t}\Big\} dr d\theta }\end{displaymath}%DIFAUXCMD
+%DIFDELCMD <  
+%DIFDELCMD < %%%
+\DIFdel{which yields:
+}\begin{displaymath} \DIFdel{d = \int_{\mathbb{R_+}} \frac{r^2}{2 D t} \exp\Big\{-\frac{r^2}{4 D t}\Big\} dr }\end{displaymath}%DIFAUXCMD
+\DIFdel{If we write $s^2 = 2 D t$, we recognize the expectation of a Rayleigh distribution, $\mathsf{E}[r] = s \sqrt{\frac{\pi}{2}}$, and so we have:
+}\begin{displaymath} \DIFdel{d = \sqrt{D t \pi } }\end{displaymath}%DIFAUXCMD
+%DIFDELCMD <  %%%
+\DIFdel{or equivalently
+}\begin{displaymath}\DIFdel{D = \frac{d^2}{\pi t}}\end{displaymath}%DIFAUXCMD
+\emph{\DIFdel{Note: it is often found in the literature that the diffusion coefficient can also be expressed in terms of mean squared dispersal distance $d_2$. It can be approximated by $d_2 = \frac{1}{n}\sum^n  \langle x_i, x_i  \rangle$  - note that $d_2 \neq d^2$ - and using the same development we have $D = d_2/4 t$.}}
+%DIFAUXCMD
+\DIFdelend \end{backmatter}
 \end{document}
