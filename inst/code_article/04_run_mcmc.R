@@ -1,6 +1,5 @@
 ##--- Run this script in order to the the mcmc inference ---##
 
-library(rRiskDSMspread)
 library(spreadR)
 library(ggplot2)
 library(abind)

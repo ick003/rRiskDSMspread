@@ -1,6 +1,5 @@
 ##--- Run this script in order test the pde model ---##
 
-library(rRiskDSMspread)
 library(spreadR)
 library(ggplot2)
 library(stringr)

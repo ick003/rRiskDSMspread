@@ -1,6 +1,5 @@
 ##--- Run this script in order to check the convergence of the mcmc inference chains ---##
 
-library(rRiskGEspread)
 library(coda)
 library(ggmcmc)
 

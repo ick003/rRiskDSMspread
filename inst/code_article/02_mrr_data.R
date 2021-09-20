@@ -1,6 +1,5 @@
 ##--- Run this script in order to set the MRR data ---##
 
-library(rRiskDSMspread)
 library(spreadR)
 library(ggplot2)
 library(dplyr)
@@ -126,7 +125,7 @@ ggplot(mrr_data) + geom_point(aes(x = DayDiff, y = N_mos, col = Col_Meth)) + fac
 
 # IV - Save the data to re-use in later scripts
 
-saveRDS(grid2D, file = "inst/extdata/grid2D.rds")
-saveRDS(grid2D_release_sites, file = "inst/extdata/grid2D_release_sites.rds")
-saveRDS(mrr_data, file = "inst/extdata/mrr_data.rds")
+# saveRDS(grid2D, file = "inst/extdata/grid2D.rds")
+# saveRDS(grid2D_release_sites, file = "inst/extdata/grid2D_release_sites.rds")
+# saveRDS(mrr_data, file = "inst/extdata/mrr_data.rds")
 

@@ -1,9 +1,5 @@
 ##--- Run this script in order to obtain prior distributions from elicited data ---##
 
-library(rRiskDSMspread)
-library(ElicitR)
-
-
 data_elicited_path <- system.file("extdata", "elicitedDEID.csv", package="rRiskDSMspread")
 
 elicitedDEID <- readr::read_csv(data_elicited_path)
@@ -124,10 +120,10 @@ legend("topright", lty=c(1, 1), lwd=c(1, 1),col=c("darkgreen", "darkblue"),
 
 # VIII - Save the data to re-use in later scripts
 
-saveRDS(mortalityParSM, file = "inst/extdata/mortalityParDSM.rds")
-saveRDS(mortalityParWT, file = "inst/extdata/mortalityParWT.rds")
-saveRDS(diffusionParSM, file = "inst/extdata/diffusionParDSM.rds")
-saveRDS(diffusionParWT, file = "inst/extdata/diffusionParWT.rds")
+# saveRDS(mortalityParSM, file = "inst/extdata/mortalityParDSM.rds")
+# saveRDS(mortalityParWT, file = "inst/extdata/mortalityParWT.rds")
+# saveRDS(diffusionParSM, file = "inst/extdata/diffusionParDSM.rds")
+# saveRDS(diffusionParWT, file = "inst/extdata/diffusionParWT.rds")
 
 # IX - Plotting all priors together
 
