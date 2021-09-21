@@ -1,31 +1,7 @@
-##--- Run this script in order to obtain prior distributions from elicited data ---##
+##--- Run this script in order to retrieve prior distributions from elicited data ---##
 
-data_elicited_path <- system.file("extdata", "elicitedDEID.csv", package="rRiskDSMspread")
-
-elicitedDEID <- readr::read_csv(data_elicited_path)
-
-# II - Get the prior distribution for the diffusion parameter of Anopheles Gambiae (Wild Type) male
-
-eventDiffusion = c("FT1-6a")#,"FT1-6c") # Ag(WT) 6a, G3 6c (males in both cases)
-elicitedDiff = elicitedDEID[intersect(
-    which(elicitedDEID$basicEvent %in% eventDiffusion),
-    which(!elicitedDEID$discard)),]
-expertDiff = elicitedDEID$expertID[intersect(
-    which(elicitedDEID$basicEvent %in% eventDiffusion),
-    which(!elicitedDEID$discard))]
-nExp = nrow(elicitedDiff)
-par = NULL
-for(i in 1:nExp){
-    e.dataE <- elicit_data(
-        cumul.probs = c(0.5-elicitedDiff$quant3[i]/2,0.5+elicitedDiff$quant3[i]/2), 
-        quants = elicitedDiff[i,c('quant1','quant2')], family = 'lognormal')
-    e.fitE <- dens_fit(e.dataE, crit = "SS")
-    par = rbind(par, e.fitE$par)
-}
-diffusionParWT = as.data.frame(par)
-diffusionParWT$expertID = as.character(expertDiff)
-diffusionParWT$family = 'lognormal'
-#saveRDS(diffusionPar, "../rds/diffusionParWT.rds")
+diffusion_distWT <- system.file("extdata", "diffusionParWT.rds", package="rRiskDSMspread")
+diffusionParWT <- readRDS(diffusion_distWT)
 
 dispersalVarWT <- par2sample(par = diffusionParWT, type = "diffusion", 
                              n = 1e5, weights = rep(1, nrow(diffusionParWT)))
@@ -33,23 +9,9 @@ diffusionVarWT = (dispersalVarWT*1000)^2 / (4 * 1) # m2 / day
 
 # III - Get the prior distribution for the diffusion parameter of Anopheles Gambiae (DSM) male
 
-eventDiffusion = c("FT1-6c") # Ag(WT) 6a, G3 6c (males in both cases)
-elicitedDiff = elicitedDEID[intersect(
-    which(elicitedDEID$basicEvent %in% eventDiffusion),
-    which(!elicitedDEID$discard)),]
-nExp = nrow(elicitedDiff)
-par = NULL
-for(i in 1:nExp){
-    e.dataE <- elicit_data(
-        cumul.probs = c(0.5-elicitedDiff$quant3[i]/2,0.5+elicitedDiff$quant3[i]/2), 
-        quants = elicitedDiff[i,c('quant1','quant2')], family = 'lognormal')
-    e.fitE <- dens_fit(e.dataE, crit = "SS")
-    par = rbind(par, e.fitE$par)
-}
-diffusionParSM = as.data.frame(par)
-diffusionParSM$expertID = as.character(expertDiff)
-diffusionParSM$family = 'lognormal'
-#saveRDS(diffusionPar, "../rds/diffusionParGE.rds")
+diffusion_distSM <- system.file("extdata", "diffusionParSM.rds", package="rRiskDSMspread")
+diffusionParSM <- readRDS(diffusion_distSM)
+
 #Generate dispersal:
 dispersalVarSM <- par2sample(par = diffusionParSM, type = "diffusion", 
                              n = 1e5, weights = rep(1, nrow(diffusionParSM)))
@@ -65,48 +27,18 @@ legend("topleft", lty=c(1, 1), lwd=c(1, 1),col=c("darkgreen", "darkblue"),
 
 # V - Get the prior distribution for the survival parameter of Anopheles Gambiae (Wild Type) male
 
-eventMortRate = c("FT1-4a-mortality", "FT1-4a-survival") # Wild type (male)
-#  eventMortRate = c("FT1-4c-mortality", "FT1-4c-survival") # G3 strain (male)
-elicitedMR = elicitedDEID[intersect(
-    which(elicitedDEID$basicEvent %in% eventMortRate),
-    which(!elicitedDEID$discard)),]
-nExp = nrow(elicitedMR)
-nameExpertsMort = as.character(elicitedMR$expertID)
-par = NULL
-for(i in 1:nrow(elicitedMR)){
-    e.dataE <- elicit_data(
-        cumul.probs = c(0.5-elicitedMR$quant3[i]/2,0.5+elicitedMR$quant3[i]/2), 
-        quants = elicitedMR[i,c('quant1','quant2')], family = elicitedMR$family[i])
-    e.fitE <- dens_fit(e.dataE, crit = "SS")
-    par = rbind(par, c(e.fitE$par, elicitedMR$family[i]))
-}
-mortalityParWT = data.frame(alpha = as.numeric(as.character(par[,'alpha'])), beta = as.numeric(as.character(par[,'beta'])))
-mortalityParWT$family = elicitedMR$family[1:nrow(elicitedMR)]
-mortalityParWT$event = elicitedMR$basicEvent[1:nrow(elicitedMR)]
+mortality_distWT <- system.file("extdata", "mortalityParWT.rds", package="rRiskDSMspread")
+mortalityParWT <- readRDS(mortality_distWT)
+
 sampMortRateWT <- par2sample(par = mortalityParWT, type = "mortality", 
                              n = 1e5, weights = rep(1, nrow(mortalityParWT)))
 
 # VI - Get the prior distribution for the survival parameter of Anopheles Gambiae (DSM) 
 
-eventMortRate = c("FT1-4c-mortality", "FT1-4c-survival") # G3 strain (male)
-elicitedMR = elicitedDEID[intersect(
-    which(elicitedDEID$basicEvent %in% eventMortRate),
-    which(!elicitedDEID$discard)),]
-nExp = nrow(elicitedMR)
-nameExpertsMort = as.character(elicitedMR$expertID)
-par = NULL
-for(i in 1:nrow(elicitedMR)){
-    e.dataE <- elicit_data(
-        cumul.probs = c(0.5-elicitedMR$quant3[i]/2,0.5+elicitedMR$quant3[i]/2), 
-        quants = elicitedMR[i,c('quant1','quant2')], family = elicitedMR$family[i])
-    e.fitE <- dens_fit(e.dataE, crit = "SS")
-    par = rbind(par, c(e.fitE$par, elicitedMR$family[i]))
-}
-mortalityParSM = data.frame(alpha = as.numeric(as.character(par[,'alpha'])), beta = as.numeric(as.character(par[,'beta'])))
-mortalityParSM$family = elicitedMR$family[1:nrow(elicitedMR)]
-mortalityParSM$event = elicitedMR$basicEvent[1:nrow(elicitedMR)]
-#saveRDS(mortalityPar, file = "../rds/mortalityParGE.rds")
-#Generate dispersal:
+mortality_distSM <- system.file("extdata", "mortalityParSM.rds", package="rRiskDSMspread")
+mortalityParSM <- readRDS(mortality_distSM)
+
+#Generate mortality rate:
 sampMortRateSM <- par2sample(par = mortalityParSM, type = "mortality", 
                              n = 1e5, weights = rep(1, nrow(mortalityParSM)))
 
@@ -118,12 +50,6 @@ legend("topright", lty=c(1, 1), lwd=c(1, 1),col=c("darkgreen", "darkblue"),
        legend = c("Linear pool prior for Ag(WT) mortality", "Linear pool prior for Ag(DSM) mortality"), 
        border = NA, box.lwd = 0, cex = 0.75, bty = "n")
 
-# VIII - Save the data to re-use in later scripts
-
-# saveRDS(mortalityParSM, file = "inst/extdata/mortalityParDSM.rds")
-# saveRDS(mortalityParWT, file = "inst/extdata/mortalityParWT.rds")
-# saveRDS(diffusionParSM, file = "inst/extdata/diffusionParDSM.rds")
-# saveRDS(diffusionParWT, file = "inst/extdata/diffusionParWT.rds")
 
 # IX - Plotting all priors together
 
